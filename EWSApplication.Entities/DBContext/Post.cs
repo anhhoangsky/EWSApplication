@@ -22,7 +22,13 @@ namespace EWSApplication.Entities.DBContext
 
         [StringLength(10)]
         public string userid { get; set; }
-
+        [StringLength(250)]
         public string content { get; set; }
+
+        public int view { get; set; }
+
+        public int  like { get; set; }
+        public int dislike { get; set; }
+        public DateTime datetimepost { get; set; }
     }
 }
