@@ -24,7 +24,21 @@ namespace EWSApplication
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Assets/css/site.css",
+                      "~/Assets/css/responsive.css",
+                      "~/Assets/css/font-awesome.min.css",
+                      "~/Assets/css/all.min.css",
+                      "~/Assets/css/line_awesome.css",
+                      "~/Assets/css/line_awesome.min.css"));
+            bundles.Add(new StyleBundle("~/Assets/animate").Include(
+                        "~/Assets/css/animate.css"
+                ));
+            bundles.Add(new StyleBundle("~/Assets/style").Include(
+                        "~/Assets/css/style.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                        "~/Assets/js/site.js"));
         }
     }
 }

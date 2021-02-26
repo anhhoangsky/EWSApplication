@@ -138,6 +138,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\all.min.css" />
+    <Content Include="Assets\css\animate.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\line_awesome.css" />
+    <Content Include="Assets\css\line_awesome.min.css" />
+    <Content Include="Assets\css\responsive.css" />
+    <Content Include="Assets\css\site.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\images\clock.png" />
+    <Content Include="Assets\images\cm-logo.png" />
+    <Content Include="Assets\images\cm-main-img.png" />
+    <Content Include="Assets\images\copy-icon.png" />
+    <Content Include="Assets\images\copy-icon2.png" />
+    <Content Include="Assets\images\icon1.png" />
+    <Content Include="Assets\images\icon2.png" />
+    <Content Include="Assets\images\icon3.png" />
+    <Content Include="Assets\images\icon4.png" />
+    <Content Include="Assets\images\icon5.png" />
+    <Content Include="Assets\images\icon6.png" />
+    <Content Include="Assets\images\icon7.png" />
+    <Content Include="Assets\images\icon8.png" />
+    <Content Include="Assets\images\icon9.png" />
+    <Content Include="Assets\images\liked-img.png" />
+    <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\logo2.png" />
+    <Content Include="Assets\images\resources\user.jpg" />
+    <Content Include="Assets\images\wd-logo.png" />
+    <Content Include="Assets\js\site.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -145,7 +173,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -173,6 +200,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
