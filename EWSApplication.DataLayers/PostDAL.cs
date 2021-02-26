@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using EWSApplication.DataLayers.Common;
 using EWSApplication.Entities.DBContext;
 namespace EWSApplication.DataLayers
 {
@@ -90,6 +93,62 @@ namespace EWSApplication.DataLayers
             var pst = db.Posts.Where(x => x.postid == postId).SingleOrDefault();
             pst.view = pst.view+1;
             db.SaveChanges();
+        }
+        /// <summary>
+        /// Tạo mới bài post
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public bool CreateNewPost(StructurePost data)
+        {
+            try
+            {
+                var pst = new Post()
+                {
+                    title = data.title,
+                    anonymous = data.anonymous,
+                    tagid = data.tagid,
+                    userid = data.userid,
+                    content = data.content,
+                    view = 0,
+                    like = 0,
+                    dislike = 0,
+                    datetimepost = DateTime.Now
+                };
+                db.Posts.Add(pst);
+                db.SaveChanges();
+                Email(data.content, "", "");
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// gửi email về admin khi có bài post mới vào hệ thống 
+        /// </summary>
+        /// <param name="htmlString"></param>
+        public static void Email(string content , string email , string pass)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+                message.From = new MailAddress("FromMailAddress");
+                message.To.Add(new MailAddress("votrannhatbinh1999@gmail.com"));
+                message.Subject = "Test";
+                message.IsBodyHtml = false; //to make message body as html (true)
+                message.Body = content;
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com"; //for gmail host  
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("FromMailAddress", "password");
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+            }
+            catch (Exception) { }
         }
     }
 }
