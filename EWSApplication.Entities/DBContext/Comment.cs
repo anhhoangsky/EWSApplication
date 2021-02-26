@@ -26,5 +26,7 @@ namespace EWSApplication.Entities.DBContext
         [Required]
         [StringLength(10)]
         public string userid { get; set; }
+
+        public DateTime datetimeComment { get; set; }
     }
 }
