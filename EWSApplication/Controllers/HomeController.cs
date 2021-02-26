@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using EWSApplication.BussinessLayers;
 namespace EWSApplication.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -30,6 +31,10 @@ namespace EWSApplication.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            //if (Session["isLogin"] != null)
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             return View();
         }
         /// <summary>
@@ -48,19 +53,20 @@ namespace EWSApplication.Controllers
                 if(userInfo != null )
                 {
                     Session["isLogin"] = userInfo;
-                    RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     return View();
                 }
 
-            }
-            else
-            {
-                RedirectToAction("Index", "Home");
-            }
+            }            
             return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Home");
         }
     }
 }
