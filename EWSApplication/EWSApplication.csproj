@@ -166,6 +166,10 @@
     <Content Include="Assets\images\resources\user.jpg" />
     <Content Include="Assets\images\wd-logo.png" />
     <Content Include="Assets\js\site.js" />
+    <Content Include="Assets\lib\slick\ajax-loader.gif" />
+    <Content Include="Assets\lib\slick\slick-theme.css" />
+    <Content Include="Assets\lib\slick\slick.css" />
+    <Content Include="Assets\lib\slick\slick.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

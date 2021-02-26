@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     @*@Scripts.Render("~/bundles/modernizr")*@
 </head>
-<body>
+<body class="wrapper">
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -238,10 +238,9 @@
     </header>
 
     <div class="container">
-        <main role="main" class="p-0">
             @RenderBody()
-        </main>
     </div>
+
     <footer>
         <div class="footy-sec mn no-margin">
             <div class="container">
@@ -264,6 +263,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/slick")
     @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", required: false)
 </body>
