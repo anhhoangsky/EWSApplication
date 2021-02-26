@@ -32,10 +32,6 @@ namespace EWSApplication.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            //if (Session["isLogin"] != null)
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
             return View();
         }
         /// <summary>
