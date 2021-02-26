@@ -6,9 +6,10 @@ using System.Web.Mvc;
 using EWSApplication.BussinessLayers;
 namespace EWSApplication.Controllers
 {
-    [Authorize]
+    
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             return View();
