@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManagerBLL.cs" />
+    <Compile Include="PostBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemBLL.cs" />
   </ItemGroup>
