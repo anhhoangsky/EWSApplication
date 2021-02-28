@@ -27,11 +27,12 @@ namespace EWSApplication
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Assets/css/site.css",
-                      "~/Assets/css/responsive.css",
                       "~/Assets/css/font-awesome.min.css",
                       "~/Assets/css/all.min.css",
                       "~/Assets/css/line_awesome.css",
-                      "~/Assets/css/line_awesome.min.css"));
+                      "~/Assets/css/line_awesome.min.css",
+                      "~/Assets/css/responsive.css"
+                      ));
             bundles.Add(new StyleBundle("~/Assets/animate").Include(
                         "~/Assets/css/animate.css"
                 ));
