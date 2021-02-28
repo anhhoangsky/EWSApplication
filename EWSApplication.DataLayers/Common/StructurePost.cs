@@ -20,5 +20,6 @@ namespace EWSApplication.DataLayers.Common
         public string userid { get; set; }
 
         public string content { get; set; }
+        public ObjFile files { get; set; }
     }
 }

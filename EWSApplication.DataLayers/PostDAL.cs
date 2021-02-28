@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using EWSApplication.DataLayers.Common;
 using EWSApplication.Entities.DBContext;
 namespace EWSApplication.DataLayers
@@ -114,7 +115,7 @@ namespace EWSApplication.DataLayers
                     like = 0,
                     dislike = 0,
                     datetimepost = DateTime.Now
-                };
+                };             
                 db.Posts.Add(pst);
                 db.SaveChanges();
                 Email(data.content, "", "");

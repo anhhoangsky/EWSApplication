@@ -65,7 +65,7 @@ namespace EWSApplication.BussinessLayers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public bool Post_CreateNewPost(StructurePost data)
+        public static bool Post_CreateNewPost(StructurePost data)
         {
             return pstDAL.CreateNewPost(data);
         }

@@ -132,6 +132,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,7 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -227,6 +230,10 @@
     <ProjectReference Include="..\EWSApplication.BussinessLayers\EWSApplication.BussinessLayers.csproj">
       <Project>{c724232a-7b3e-41e7-a89c-89618dd83d45}</Project>
       <Name>EWSApplication.BussinessLayers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EWSApplication.DataLayers\EWSApplication.DataLayers.csproj">
+      <Project>{113E03AC-DF2B-44A7-9DD8-10DB61B2A870}</Project>
+      <Name>EWSApplication.DataLayers</Name>
     </ProjectReference>
     <ProjectReference Include="..\EWSApplication.Entities\EWSApplication.Entities.csproj">
       <Project>{4afe229a-5833-44c2-bf11-562c96c639bd}</Project>
