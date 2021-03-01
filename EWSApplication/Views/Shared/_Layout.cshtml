@@ -9,25 +9,6 @@
     @*@Scripts.Render("~/bundles/modernizr")*@
 </head>
 <body class="wrapper">
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
     <header>
         <div class="container">
             <div class="header-data">
@@ -43,7 +24,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="index.html" title="">
+                            <a href="@Url.Action("Index", "Home")" title="">
                                 <span><img src="~/Assets/images/icon1.png" alt=""></span>
                                 Home
                             </a>
@@ -230,7 +211,7 @@
                             <li><a href="#" title="">Faqs</a></li>
                             <li><a href="#" title="">Terms &amp; Conditions</a></li>
                         </ul>
-                        <h3 class="tc"><a href="sign-in.html" title="">Logout</a></h3>
+                        <h3 class="tc"><a href=""@Url.Action("Logout", "Home")"" title="">Logout</a></h3>
                     </div>
                 </div>
             </div>

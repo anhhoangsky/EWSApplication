@@ -18,7 +18,6 @@ namespace EWSApplication.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         public ActionResult Detail(int postId)
         {
             //xử lí dữ liệu post
@@ -67,14 +66,7 @@ namespace EWSApplication.Controllers
                     filePath = "";
                 }
             }
-            if(data.anonymous != null)
-            {
-                data.anonymous = true;
-            }
-            else
-            {
-                data.anonymous = false;
-            }
+
             PostBLL.Post_CreateNewPost(data, filePath);
             return RedirectToAction("Index","Home");
         }
