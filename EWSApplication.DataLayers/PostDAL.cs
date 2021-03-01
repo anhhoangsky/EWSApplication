@@ -107,8 +107,8 @@ namespace EWSApplication.DataLayers
                 var pst = new Post()
                 {
                     title = data.title,
-                    anonymous = data.anonymous,
-                    tagid = data.tagid,
+                   // anonymous = data.anonymous,
+                    tagid = data.tag,
                     userid = data.userid,
                     content = data.content,
                     view = 0,
