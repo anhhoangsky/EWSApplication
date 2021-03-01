@@ -13,7 +13,6 @@ namespace EWSApplication.Controllers
     public class PostController : Controller
     {
         // GET: Post
-        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -37,9 +36,13 @@ namespace EWSApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(StructurePost data , ObjFile file)
+        public ActionResult Create(StructurePost data , ObjFile doc)
         {
             var filePath = "";
+            if(Session["uid"] != null)
+            {
+                data.userid = Session["uid"].ToString();
+            }
             foreach (var file in doc.files)
             {
 

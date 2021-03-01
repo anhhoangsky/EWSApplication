@@ -9,8 +9,7 @@ namespace EWSApplication.Entities.DBContext
     [Table("Comment")]
     public partial class Comment
     {
-        [StringLength(10)]
-        public string commentid { get; set; }
+        public int commentid { get; set; }
 
         public bool anonymous { get; set; }
 

@@ -9,8 +9,7 @@ namespace EWSApplication.Entities.DBContext
     [Table("Role")]
     public partial class Role
     {
-        [StringLength(10)]
-        public string roleid { get; set; }
+        public int roleid { get; set; }
 
         [Required]
         [StringLength(100)]

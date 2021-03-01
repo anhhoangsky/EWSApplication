@@ -102,19 +102,22 @@ namespace EWSApplication.DataLayers
         /// <returns></returns>
         public bool CreateNewPost(StructurePost data, string filePath)
         {
+            string er = "";
             try
             {
                 Post pst = new Post()
                 {
+                    postid = 0,
                     title = data.title,
                     anonymous = data.anonymous,
                     tag = data.tag,
-                    userid = data.userid,
+                    userid = Convert.ToInt32(data.userid),
                     content = data.content,
                     view = 0,
                     like = 0,
                     dislike = 0,
-                    datetimepost = DateTime.Now
+                    datetimepost = DateTime.Now,
+                    filePath = filePath
                 };             
                 db.Posts.Add(pst);
                 db.SaveChanges();
@@ -123,6 +126,7 @@ namespace EWSApplication.DataLayers
             }
             catch (Exception e)
             {
+                er = e.Message;
                 return false;
             }
         }

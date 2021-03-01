@@ -12,7 +12,7 @@ namespace EWSApplication.BussinessLayers
     public class PostBLL
     {
         public static PostDAL pstDAL = new PostDAL();
-        public List<Post> Post_GetAllPost()
+        public static List<Post> Post_GetAllPost()
         {
             return pstDAL.GetAllPost();
         }
@@ -21,7 +21,7 @@ namespace EWSApplication.BussinessLayers
         /// </summary>
         /// <param name="postId"></param>
         /// <returns></returns>
-        public Post Post_GetDetailsPost(string postId)
+        public static Post Post_GetDetailsPost(int postId)
         {
             return pstDAL.GetDetailsPost(postId);
         }
@@ -29,7 +29,7 @@ namespace EWSApplication.BussinessLayers
         /// lấy top 5 bài post phổ biến
         /// </summary>
         /// <returns></returns>
-        public List<Post> Post_GetTopPopularPost()
+        public static List<Post> Post_GetTopPopularPost()
         {
             return pstDAL.GetTopPopularPost();
         }
@@ -37,7 +37,7 @@ namespace EWSApplication.BussinessLayers
         /// lấy top 5 bài post nhiều view nhất
         /// </summary>
         /// <returns></returns>
-        public List<Post> Post_GetTopViewPost()
+        public static List<Post> Post_GetTopViewPost()
         {
             return pstDAL.GetTopViewPost();
         }
@@ -45,7 +45,7 @@ namespace EWSApplication.BussinessLayers
         /// lấy top bài post lastest
         /// </summary>
         /// <returns></returns>
-        public List<Post> Post_GetTopLastPost()
+        public static List<Post> Post_GetTopLastPost()
         {
             return pstDAL.GetTopLastPost();
         }
@@ -55,7 +55,7 @@ namespace EWSApplication.BussinessLayers
         /// </summary>
         /// <param name="postId"></param>
         /// <returns></returns>
-        public Comment Post_GetListCommentOfPost(string postId)
+        public static Comment Post_GetListCommentOfPost(int postId)
         {
             return pstDAL.GetListCommentOfPost(postId);
         }

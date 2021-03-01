@@ -18,9 +18,7 @@ namespace EWSApplication.Entities.DBContext
 
         [StringLength(10)]
         public string tag { get; set; }
-
-        [StringLength(10)]
-        public string userid { get; set; }
+        public int userid { get; set; }
         [StringLength(250)]
         public string content { get; set; }
 
@@ -29,5 +27,7 @@ namespace EWSApplication.Entities.DBContext
         public int  like { get; set; }
         public int dislike { get; set; }
         public DateTime datetimepost { get; set; }
+        [StringLength(250)]
+        public string filePath { get; set; }
     }
 }
