@@ -56,11 +56,15 @@ namespace EWSApplication.Controllers
             foreach (var file in doc.files)
             {
 
-                if (file.ContentLength > 0)
+                if (file != null)
                 {
                     var fileName = Path.GetFileName(file.FileName);
                     filePath = Path.Combine(Server.MapPath("~/Files"), fileName);
                     file.SaveAs(filePath);
+                }
+                else
+                {
+                    filePath = "";
                 }
             }
             if(data.anonymous != null)
