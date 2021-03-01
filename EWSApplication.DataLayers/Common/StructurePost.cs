@@ -12,7 +12,7 @@ namespace EWSApplication.DataLayers.Common
       
         public string title { get; set; }
 
-        public bool? anonymous { get; set; }
+        public string anonymous { get; set; }
 
 
         public string tag { get; set; }

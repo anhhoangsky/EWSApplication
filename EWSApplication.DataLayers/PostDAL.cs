@@ -106,9 +106,9 @@ namespace EWSApplication.DataLayers
             {
                 Post pst = new Post()
                 {
-                    postid = 0,
+                    //postid = 0,
                     title = data.title,
-                    anonymous = data.anonymous,
+                    anonymous = data.anonymous=="on",
                     tag = data.tag,
                     userid = Convert.ToInt32(data.userid),
                     content = data.content,

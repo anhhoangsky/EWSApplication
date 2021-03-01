@@ -190,12 +190,12 @@
                                             <h3>@item.title</h3>
                                             <hr />
                                             <p>
-                                                @item.content <a href="#" title="">view more</a>
+                                                @item.content <a href="@Url.Action("detail", "Post")?postId=@{@item.postid;}" title="">view more</a>
                                             </p>
                                             <ul class="skill-tags">
                                                 @{ foreach (var @tag in @item.tag.Split())
                                                     {
-                                                    <li><a href="#" title="">tag</a></li>
+                                                    <li><a href="#" title="">@tag</a></li>
                                                     } }
                                             </ul>
                                         </div>
@@ -347,7 +347,6 @@
                    target = "UploadTarget"
                }))
             {
-                @*@Html.Hidden("userid", 12345)*@
                 <div class="row">
                     <div class="col-lg-12">
                         <input type="text" name="title" placeholder="Title">
@@ -380,9 +379,6 @@
                     </div>
                 </div>
             }
-
-            @*<div id="uploadsContainer"></div>
-                <iframe id="UploadTarget" name="UploadTarget" onload="UploadFile_Complete();" style="position: absolute; left: -999em; top: -999em;"></iframe>*@
         </div>
 
 
