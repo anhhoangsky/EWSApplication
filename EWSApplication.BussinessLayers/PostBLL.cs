@@ -12,7 +12,7 @@ namespace EWSApplication.BussinessLayers
     public class PostBLL
     {
         public static PostDAL pstDAL = new PostDAL();
-        public static List<Post> Post_GetAllPost()
+        public static List<StructurePostToRender> Post_GetAllPost()
         {
             return pstDAL.GetAllPost();
         }
@@ -55,7 +55,7 @@ namespace EWSApplication.BussinessLayers
         /// </summary>
         /// <param name="postId"></param>
         /// <returns></returns>
-        public static List<Comment> Post_GetListCommentOfPost(int postId)
+        public static List<StructureCommentToRender> Post_GetListCommentOfPost(int postId)
         {
             return pstDAL.GetListCommentOfPost(postId);
         }

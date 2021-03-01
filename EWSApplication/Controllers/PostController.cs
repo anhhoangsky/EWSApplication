@@ -21,7 +21,8 @@ namespace EWSApplication.Controllers
         public ActionResult Detail(int postId)
         {
             //xử lí dữ liệu post
-            // dữ liệu post gồm:......           
+            // dữ liệu post gồm:......    
+            TempData["postIdFromDetails"] = postId;
             Post postData = new Post();
             postData= PostBLL.Post_GetDetailsPost(postId);
             ViewBag.ListComt = PostBLL.Post_GetListCommentOfPost(postId);
@@ -31,6 +32,8 @@ namespace EWSApplication.Controllers
         [HttpPost]
         public ActionResult NewComment(StructureComment cmtData)
         {
+            cmtData.userid = Convert.ToInt32(Session["uid"]);
+            cmtData.postid = Convert.ToInt32(TempData["postIdFromDetails"]);
             //gồm nội dung comment và id người gửi + id bài post...
             if (cmtData.anonymous != null)
             {
@@ -41,7 +44,7 @@ namespace EWSApplication.Controllers
                 cmtData.anonymous = false;
             }
             PostBLL.Post_CreateNewComment(cmtData);
-            return RedirectToAction("Detail","Post");
+            return RedirectToAction("Index","Home");
         }
 
         [HttpPost]

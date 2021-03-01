@@ -15,16 +15,11 @@ namespace EWSApplication.Entities.DBContext
 
         public DateTime Date { get; set; }
 
-        [Required]
+        [StringLength(250)]
         public string Content { get; set; }
+    
+        public int postid { get; set; }            
+        public int userid { get; set; }
 
-        [Required]
-        public int postid { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string userid { get; set; }
-
-        public DateTime datetimeComment { get; set; }
     }
 }

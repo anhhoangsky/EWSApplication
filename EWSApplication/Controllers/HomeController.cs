@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using EWSApplication.BussinessLayers;
+using EWSApplication.DataLayers.Common;
 using EWSApplication.Entities.DBContext;
 
 namespace EWSApplication.Controllers
@@ -15,7 +16,7 @@ namespace EWSApplication.Controllers
         
         public ActionResult Index(string mode = "all")
         {
-            List<Post> lst = new List<Post>();
+            List<StructurePostToRender> lst = new List<StructurePostToRender>();
             // xử lí mode render
             // mode = all ->> GetAllPost
             // mode = popular ->> GetTopPopularPost
@@ -25,18 +26,18 @@ namespace EWSApplication.Controllers
             {
                 lst= PostBLL.Post_GetAllPost();
             }
-            if (mode == "popular")
-            {
-                lst =PostBLL.Post_GetTopPopularPost();
-            }
-            if (mode == "topview")
-            {
-                lst= PostBLL.Post_GetTopViewPost();
-            }
-            if (mode == "lastest")
-            {
-                lst= PostBLL.Post_GetTopLastPost();
-            }
+            //if (mode == "popular")
+            //{
+            //    lst =PostBLL.Post_GetTopPopularPost();
+            //}
+            //if (mode == "topview")
+            //{
+            //    lst= PostBLL.Post_GetTopViewPost();
+            //}
+            //if (mode == "lastest")
+            //{
+            //    lst= PostBLL.Post_GetTopLastPost();
+            //}
             return View(lst);
         }
 
@@ -76,6 +77,8 @@ namespace EWSApplication.Controllers
                 return View();
             }
             Session["uid"] = userInfo.userid;
+            Session["uname"] = userInfo.username;
+            Session["ufacultyid"] = userInfo.facultyid;
             FormsAuthentication.SetAuthCookie("isLogin", false);
             return RedirectToAction("Index", "Home");
 

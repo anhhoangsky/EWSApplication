@@ -51,7 +51,9 @@
   <ItemGroup>
     <Compile Include="Common\ObjFile.cs" />
     <Compile Include="Common\StructureComment.cs" />
+    <Compile Include="Common\StructureCommentToRender.cs" />
     <Compile Include="Common\StructurePost.cs" />
+    <Compile Include="Common\StructurePostToRender.cs" />
     <Compile Include="ManagerDAL.cs" />
     <Compile Include="PostDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

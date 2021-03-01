@@ -43,7 +43,7 @@
                                                                 <img src="images/resources/bg-img1.png" alt="">
                                                             </div>
                                                             <div class="comment">
-                                                                <h3>Thiếu username</h3>
+                                                                <h3>@cmt.username</h3>
                                                                 <span><img src="images/clock.png" alt=""> 3 min ago</span>
                                                                 <p>@cmt.Content</p>
                                                             </div>
@@ -67,9 +67,9 @@
                             </div>
                             <div class="post_comment_sec">
                                 <form action="~/Post/NewComment" method="post">
-                                    <input type="hidden" name="iduser" value="12345" />
-                                    <input type="hidden" name="idpost" value="54312" />
-                                    <textarea placeholder="Your Answer" name="content" style="float:none"></textarea>
+                                    @*<input type="hidden" name="iduser" value="12345" />
+                                    <input type="hidden" name="idpost" value="54312" />*@
+                                    <textarea placeholder="Your Answer" name="Content" style="float:none"></textarea>
                                     <br>
                                         <div class="slideThree" style="margin:0; padding:0">
                                             <input type="checkbox" value="None" id="slideThree" name="anonymous" />

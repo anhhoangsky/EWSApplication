@@ -17,11 +17,48 @@ namespace EWSApplication.DataLayers
         /// lấy danh sách tất cả bài post để hiển thị trên Home
         /// </summary>
         /// <returns></returns>
-        public List<Post> GetAllPost()
+        public List<StructurePostToRender> GetAllPost()
         {
             List<Post> lst = new List<Post>();
             lst = db.Posts.ToList();
-            return lst;
+            var list = (from p in db.Posts
+                     join u in db.Users
+                     on p.userid equals u.userid
+                     select new
+                     {
+                         postid = p.postid,
+                         title = p.title,
+                         anonymous = p.anonymous,
+                         tag = p.tag,
+                         userid = p.userid,
+                         content = p.content,
+                         view = p.view,
+                         like = p.like,
+                         dislike = p.dislike,
+                         datetimepost = p.datetimepost,
+                         filepath = p.filePath,
+                         username = u.username
+                     }).ToList();
+            List<StructurePostToRender> data = new List<StructurePostToRender>();
+            foreach (var item in list)
+            {
+                data.Add(new StructurePostToRender
+                {
+                    postid = item.postid,
+                    title = item.title,
+                    anonymous = item.anonymous,
+                    tag = item.tag,
+                    userid = item.userid,
+                    content = item.content,
+                    view = item.view,
+                    like = item.like,
+                    dislike = item.dislike,
+                    datetimepost = item.datetimepost,
+                    filePath = item.filepath,
+                    username = item.username
+                });
+            }
+            return data;
         }
         /// <summary>
         /// Chi tiết bài post
@@ -79,11 +116,38 @@ namespace EWSApplication.DataLayers
         /// </summary>
         /// <param name="postId"></param>
         /// <returns></returns>
-        public List<Comment> GetListCommentOfPost(int postId)
+        public List<StructureCommentToRender> GetListCommentOfPost(int postId)
         {
-            List<Comment> cmt = new List<Comment>();
-            cmt = db.Comments.Where(x => x.postid == postId).ToList();
-            return cmt;
+            //List<Comment> cmt = new List<Comment>();
+            //cmt = db.Comments.Where(x => x.postid == postId).ToList();
+            var list = (from c in db.Comments
+                        join u in db.Users
+                        on c.userid equals u.userid
+                        select new
+                        {
+                            commentid = c.commentid,
+                            anonymous = c.anonymous,
+                            Date = c.Date,
+                            Content = c.Content,
+                            postid = c.postid,
+                            userid = c.userid,
+                            username = u.username
+                        }).ToList();
+            List<StructureCommentToRender> data = new List<StructureCommentToRender>();
+            foreach (var c in list)
+            {
+                data.Add(new StructureCommentToRender
+                {
+                            commentid = c.commentid,
+                            anonymous = c.anonymous,
+                            Date = c.Date,
+                            Content = c.Content,
+                            postid = c.postid,
+                            userid = c.userid,
+                            username = c.username
+                });
+            }
+            return data;
         }
         /// <summary>
         /// tăng view cho bài post
@@ -120,7 +184,7 @@ namespace EWSApplication.DataLayers
                 };             
                 db.Posts.Add(pst);
                 db.SaveChanges();
-                //Email(data.content, "", "");
+                Email(data.content, "", "");
                 return true;
             }
             catch (Exception e)
@@ -159,7 +223,7 @@ namespace EWSApplication.DataLayers
             {
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("FromMailAddress");
+                message.From = new MailAddress("votrannhatbinh29081999@gmail.com");
                 message.To.Add(new MailAddress("votrannhatbinh1999@gmail.com"));
                 message.Subject = "Test";
                 message.IsBodyHtml = false; //to make message body as html (true)
@@ -168,7 +232,7 @@ namespace EWSApplication.DataLayers
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("FromMailAddress", "password");
+                smtp.Credentials = new NetworkCredential("votrannhatbinh29081999@gmail.com", "vinamilk");
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
             }

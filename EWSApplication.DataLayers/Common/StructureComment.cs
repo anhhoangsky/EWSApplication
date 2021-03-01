@@ -17,6 +17,6 @@ namespace EWSApplication.DataLayers.Common
 
         public int postid { get; set; }
 
-        public string userid { get; set; }
+        public int userid { get; set; }
     }
 }

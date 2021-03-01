@@ -1,4 +1,4 @@
-﻿@model List<EWSApplication.Entities.DBContext.Post>
+﻿@model List<EWSApplication.DataLayers.Common.StructurePostToRender>
 
 @{
     ViewBag.Title = "Home Page";
@@ -162,7 +162,7 @@
                                             <div class="usy-dt">
                                                 <img src="images/resources/us-pic.png" alt="">
                                                 <div class="usy-name">
-                                                    <h3>@item.userid</h3>
+                                                    <h3>@item.username</h3>
                                                     <span><img src="images/clock.png" alt="">3 min ago</span>
                                                 </div>
                                             </div>
