@@ -29,20 +29,9 @@ namespace EWSApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(StructurePost data)
+        public ActionResult Create(StructurePost data , ObjFile file)
         {
-            // demo code 
-            foreach (var file in data.files.files)
-            {
-
-                if (file.ContentLength > 0)
-                {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var filePath = Path.Combine(Server.MapPath("~/Files"), fileName);
-                    file.SaveAs(filePath);
-                }
-            }
-            PostBLL.Post_CreateNewPost(data);
+            
             return RedirectToAction("Index");
         }
     }

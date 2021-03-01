@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Collections.Generic;
+using System.Web;
 namespace EWSApplication.DataLayers.Common
 {
     public class StructurePost
@@ -14,12 +15,11 @@ namespace EWSApplication.DataLayers.Common
         public bool? anonymous { get; set; }
 
 
-        public string tagid { get; set; }
+        public string tag { get; set; }
 
   
         public string userid { get; set; }
 
         public string content { get; set; }
-        public ObjFile files { get; set; }
     }
 }
