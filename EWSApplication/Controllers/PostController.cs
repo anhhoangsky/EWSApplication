@@ -19,20 +19,30 @@ namespace EWSApplication.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Detail(string postId)
+        public ActionResult Detail(int postId)
         {
             //xử lí dữ liệu post
-            // dữ liệu post gồm:......
-            //var postData= PostBLL.pstDAL.GetDetailsPost(postId);
+            // dữ liệu post gồm:......           
             Post postData = new Post();
+            postData= PostBLL.Post_GetDetailsPost(postId);
+            ViewBag.ListComt = PostBLL.Post_GetListCommentOfPost(postId);
             return View(postData);
         }
 
         [HttpPost]
-        public ActionResult NewComment()
+        public ActionResult NewComment(StructureComment cmtData)
         {
             //gồm nội dung comment và id người gửi + id bài post...
-            return RedirectToAction("Index");
+            if (cmtData.anonymous != null)
+            {
+                cmtData.anonymous = true;
+            }
+            else
+            {
+                cmtData.anonymous = false;
+            }
+            PostBLL.Post_CreateNewComment(cmtData);
+            return RedirectToAction("Detail","Post");
         }
 
         [HttpPost]
