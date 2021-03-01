@@ -10,7 +10,7 @@ namespace EWSApplication.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        [AllowAnonymous]
+        
         public ActionResult Index(string mode = "top_new")
         {
             // xử lí mode render

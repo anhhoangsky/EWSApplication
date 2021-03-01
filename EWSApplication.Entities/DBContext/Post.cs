@@ -9,8 +9,7 @@ namespace EWSApplication.Entities.DBContext
     [Table("Post")]
     public partial class Post
     {
-        [StringLength(10)]
-        public string postid { get; set; }
+        public int postid { get; set; }
 
         [StringLength(100)]
         public string title { get; set; }

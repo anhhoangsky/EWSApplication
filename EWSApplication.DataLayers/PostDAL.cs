@@ -28,7 +28,7 @@ namespace EWSApplication.DataLayers
         /// </summary>
         /// <param name="postId"></param>
         /// <returns></returns>
-        public Post GetDetailsPost(string postId)
+        public Post GetDetailsPost(int postId)
         {
             Post pst = new Post();
             pst = db.Posts.Where(x => x.postid == postId).SingleOrDefault();
@@ -79,7 +79,7 @@ namespace EWSApplication.DataLayers
         /// </summary>
         /// <param name="postId"></param>
         /// <returns></returns>
-        public Comment GetListCommentOfPost(string postId)
+        public Comment GetListCommentOfPost(int postId)
         {
             Comment cmt = new Comment();
             cmt = db.Comments.Where(x => x.postid == postId).SingleOrDefault();
@@ -89,7 +89,7 @@ namespace EWSApplication.DataLayers
         /// tăng view cho bài post
         /// </summary>
         /// <param name="postId"></param>
-        public void UpdateViewPost(string postId)
+        public void UpdateViewPost(int postId)
         {
             var pst = db.Posts.Where(x => x.postid == postId).SingleOrDefault();
             pst.view = pst.view+1;
@@ -100,14 +100,14 @@ namespace EWSApplication.DataLayers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public bool CreateNewPost(StructurePost data)
+        public bool CreateNewPost(StructurePost data, string filePath)
         {
             try
             {
-                var pst = new Post()
+                Post pst = new Post()
                 {
                     title = data.title,
-                   // anonymous = data.anonymous,
+                    anonymous = data.anonymous,
                     tagid = data.tag,
                     userid = data.userid,
                     content = data.content,
@@ -118,7 +118,7 @@ namespace EWSApplication.DataLayers
                 };             
                 db.Posts.Add(pst);
                 db.SaveChanges();
-                Email(data.content, "", "");
+                //Email(data.content, "", "");
                 return true;
             }
             catch (Exception e)
