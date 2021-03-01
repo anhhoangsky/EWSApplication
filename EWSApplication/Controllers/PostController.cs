@@ -39,8 +39,27 @@ namespace EWSApplication.Controllers
         [HttpPost]
         public ActionResult Create(StructurePost data , ObjFile file)
         {
-            
-            return RedirectToAction("Index");
+            var filePath = "";
+            foreach (var file in doc.files)
+            {
+
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    filePath = Path.Combine(Server.MapPath("~/Files"), fileName);
+                    file.SaveAs(filePath);
+                }
+            }
+            if(data.anonymous != null)
+            {
+                data.anonymous = true;
+            }
+            else
+            {
+                data.anonymous = false;
+            }
+            PostBLL.Post_CreateNewPost(data, filePath);
+            return RedirectToAction("Index","Home");
         }
     }
 }

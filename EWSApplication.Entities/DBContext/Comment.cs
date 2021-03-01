@@ -20,8 +20,7 @@ namespace EWSApplication.Entities.DBContext
         public string Content { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string postid { get; set; }
+        public int postid { get; set; }
 
         [Required]
         [StringLength(10)]
