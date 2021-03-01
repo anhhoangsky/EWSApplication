@@ -42,6 +42,18 @@ namespace EWSApplication
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                         "~/Assets/js/site.js"));
+
+            bundles.Add(new StyleBundle("~/Assets/codemirror").Include(
+                        "~/Assets/lib/codemirror/codemirror.css",
+                        "~/Assets/lib/codemirror/modestyle.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/codemirror").Include(
+                            "~/Assets/lib/codemirror/codemirror.js",
+                            "~/Assets/lib/codemirror/simple.js",
+                            "~/Assets/lib/codemirror/placeholder.js",
+                            "~/Assets/lib/codemirror/anhmode.js"));
+           
         }
     }
 }

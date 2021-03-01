@@ -167,6 +167,12 @@
     <Content Include="Assets\images\resources\user.jpg" />
     <Content Include="Assets\images\wd-logo.png" />
     <Content Include="Assets\js\site.js" />
+    <Content Include="Assets\lib\codemirror\anhmode.js" />
+    <Content Include="Assets\lib\codemirror\modestyle.css" />
+    <Content Include="Assets\lib\codemirror\codemirror.css" />
+    <Content Include="Assets\lib\codemirror\codemirror.js" />
+    <Content Include="Assets\lib\codemirror\placeholder.js" />
+    <Content Include="Assets\lib\codemirror\simple.js" />
     <Content Include="Assets\lib\slick\ajax-loader.gif" />
     <Content Include="Assets\lib\slick\slick-theme.css" />
     <Content Include="Assets\lib\slick\slick.css" />

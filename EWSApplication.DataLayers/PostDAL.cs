@@ -108,7 +108,7 @@ namespace EWSApplication.DataLayers
                 {
                     title = data.title,
                     anonymous = data.anonymous,
-                    tagid = data.tagid,
+                    tag = data.tag,
                     userid = data.userid,
                     content = data.content,
                     view = 0,

@@ -18,7 +18,7 @@ namespace EWSApplication.Entities.DBContext
         public bool? anonymous { get; set; }
 
         [StringLength(10)]
-        public string tagid { get; set; }
+        public string tag { get; set; }
 
         [StringLength(10)]
         public string userid { get; set; }

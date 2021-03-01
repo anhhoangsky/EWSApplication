@@ -82,8 +82,15 @@
                                 <img src="images/resources/bg-img2.png" alt="">
                             </div>
                             <div class="post_comment_sec">
-                                <form>
-<textarea placeholder="Your Answer"></textarea>
+                                <form action="~/Post/NewComment" method="post">
+                                    <input type="hidden" name="iduser" value="12345" />
+                                    <input type="hidden" name="idpost" value="54312" />
+                                    <textarea placeholder="Your Answer" name="content" style="float:none"></textarea>
+                                    <br>
+                                        <div class="slideThree" style="margin:0; padding:0">
+                                            <input type="checkbox" value="None" id="slideThree" name="anonymous" />
+                                            <label for="slideThree">Anonymous</label>
+                                        </div>
                                     <button type="submit">Post Answer</button>
                                 </form>
                             </div>

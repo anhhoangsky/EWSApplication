@@ -13,6 +13,7 @@ namespace EWSApplication.Controllers
     public class PostController : Controller
     {
         // GET: Post
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -26,6 +27,13 @@ namespace EWSApplication.Controllers
             //var postData= PostBLL.pstDAL.GetDetailsPost(postId);
             Post postData = new Post();
             return View(postData);
+        }
+
+        [HttpPost]
+        public ActionResult NewComment()
+        {
+            //gồm nội dung comment và id người gửi + id bài post...
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
