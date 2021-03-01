@@ -9,7 +9,7 @@ namespace EWSApplication.Entities.DBContext
     [Table("User")]
     public partial class User
     {
-        public int userid { get; set; }
+        public string userid { get; set; }
 
         [Required]
         [StringLength(100)]

@@ -1,5 +1,8 @@
-﻿@{
+﻿@model List<EWSApplication.Entities.DBContext.Post>
+
+@{
     ViewBag.Title = "Home Page";
+
 }
 
 @Styles.Render("~/Assets/codemirror")
@@ -10,7 +13,7 @@
         <div class="search-box">
             <form>
                 <input type="text" name="search" placeholder="Search keywords">
-                <button type="submit">Search</button>
+                <button type="submit">Search </button>
             </form>
         </div>
     </div>
@@ -152,298 +155,68 @@
                                 </div>
                             </div>
                             <div class="posts-section">
-                                <div class="post-bar">
-                                    <div class="post_topbar">
-                                        <div class="usy-dt">
-                                            <img src="images/resources/us-pic.png" alt="">
-                                            <div class="usy-name">
-                                                <h3>John Doe</h3>
-                                                <span><img src="images/clock.png" alt="">3 min ago</span>
+                                @foreach (var item in Model)
+                                    {
+                                    <div class="post-bar">
+                                        <div class="post_topbar">
+                                            <div class="usy-dt">
+                                                <img src="images/resources/us-pic.png" alt="">
+                                                <div class="usy-name">
+                                                    <h3>@item.userid</h3>
+                                                    <span><img src="images/clock.png" alt="">3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="ed-opts">
+                                                <a href="#" title="" class="ed-opts-open">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <ul class="ed-options">
+                                                    <li><a href="#" title="">Edit Post</a></li>
+                                                    <li><a href="#" title="">Unsaved</a></li>
+                                                    <li><a href="#" title="">Unbid</a></li>
+                                                    <li><a href="#" title="">Close</a></li>
+                                                    <li><a href="#" title="">Hide</a></li>
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="ed-opts">
-                                            <a href="#" title="" class="ed-opts-open">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <ul class="ed-options">
-                                                <li><a href="#" title="">Edit Post</a></li>
-                                                <li><a href="#" title="">Unsaved</a></li>
-                                                <li><a href="#" title="">Unbid</a></li>
-                                                <li><a href="#" title="">Close</a></li>
-                                                <li><a href="#" title="">Hide</a></li>
+                                        <div class="epi-sec">
+                                            <ul class="bk-links">
+                                                <li><a href="#" title=""><i class="fas fa-bookmark"></i></a></li>
+                                                <li><a href="#" title=""><i class="fas fa-envelope"></i></a></li>
+                                                <li><a href="#" title="" class="bid_now">Bid Now</a></li>
                                             </ul>
                                         </div>
-                                    </div>
-                                    <div class="epi-sec">
-                                        <ul class="descp">
-                                            <li>
-                                                <img src="images/icon8.png" alt=""><span>Front End Developer</span>
-                                            </li>
-                                            <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                        </ul>
-                                        <ul class="bk-links">
-                                            <li><a href="#" title=""><i class="fas fa-bookmark"></i></a></li>
-                                            <li><a href="#" title=""><i class="fas fa-envelope"></i></a></li>
-                                            <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job_descp">
-                                        <h3>Simple Classified Site</h3>
-                                        <ul class="job-dt">
-                                            <li><span>$300 - $350</span></li>
-                                        </ul>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
-                                            hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit
-                                            amet... <a href="#" title="">view more</a>
-                                        </p>
-                                        <ul class="skill-tags">
-                                            <li><a href="#" title="">HTML</a></li>
-                                            <li><a href="#" title="">PHP</a></li>
-                                            <li><a href="#" title="">CSS</a></li>
-                                            <li><a href="#" title="">Javascript</a></li>
-                                            <li><a href="#" title="">Wordpress</a></li>
-                                            <li><a href="#" title="">Photoshop</a></li>
-                                            <li><a href="#" title="">Illustrator</a></li>
-                                            <li><a href="#" title="">Corel Draw</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job-status-bar">
-                                        <ul class="like-com">
-                                            <li>
-                                                <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
-                                                <img src="images/liked-img.png" alt="">
-                                                <span>25</span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="com">
-                                                    <i class="fas fa-comment-alt"></i> Comments
-                                                    15
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                                    </div>
-                                </div>
-                                <div class="post-bar">
-                                    <div class="post_topbar">
-                                        <div class="usy-dt">
-                                            <img src="images/resources/us-pic.png" alt="">
-                                            <div class="usy-name">
-                                                <h3>John Doe</h3>
-                                                <span><img src="images/clock.png" alt="">3 min ago</span>
-                                            </div>
-                                        </div>
-                                        <div class="ed-opts">
-                                            <a href="#" title="" class="ed-opts-open">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <ul class="ed-options">
-                                                <li><a href="#" title="">Edit Post</a></li>
-                                                <li><a href="#" title="">Unsaved</a></li>
-                                                <li><a href="#" title="">Unbid</a></li>
-                                                <li><a href="#" title="">Close</a></li>
-                                                <li><a href="#" title="">Hide</a></li>
+                                        <div class="job_descp">
+                                            <h3>@item.title</h3>
+                                            <hr />
+                                            <p>
+                                                @item.content <a href="#" title="">view more</a>
+                                            </p>
+                                            <ul class="skill-tags">
+                                                @{ foreach (var @tag in @item.tag.Split())
+                                                    {
+                                                    <li><a href="#" title="">tag</a></li>
+                                                    } }
                                             </ul>
                                         </div>
-                                    </div>
-                                    <div class="epi-sec">
-                                        <ul class="descp">
-                                            <li>
-                                                <img src="images/icon8.png" alt=""><span>Front End Developer</span>
-                                            </li>
-                                            <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                        </ul>
-                                        <ul class="bk-links">
-                                            <li><a href="#" title=""><i class="fas fa-bookmark"></i></a></li>
-                                            <li><a href="#" title=""><i class="fas fa-envelope"></i></a></li>
-                                            <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job_descp">
-                                        <h3>Ios Shopping mobile app</h3>
-                                        <ul class="job-dt">
-                                            <li><span>$300 - $350</span></li>
-                                        </ul>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
-                                            hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit
-                                            amet... <a href="#" title="">view more</a>
-                                        </p>
-                                        <ul class="skill-tags">
-                                            <li><a href="#" title="">HTML</a></li>
-                                            <li><a href="#" title="">PHP</a></li>
-                                            <li><a href="#" title="">CSS</a></li>
-                                            <li><a href="#" title="">Javascript</a></li>
-                                            <li><a href="#" title="">Wordpress</a></li>
-                                            <li><a href="#" title="">Photoshop</a></li>
-                                            <li><a href="#" title="">Illustrator</a></li>
-                                            <li><a href="#" title="">Corel Draw</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job-status-bar">
-                                        <ul class="like-com">
-                                            <li>
-                                                <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
-                                                <img src="images/liked-img.png" alt="">
-                                                <span>25</span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="com">
-                                                    <i class="fas fa-comment-alt"></i> Comments
-                                                    15
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                                    </div>
-                                </div>
-                                <div class="post-bar">
-                                    <div class="post_topbar">
-                                        <div class="usy-dt">
-                                            <img src="images/resources/us-pic.png" alt="">
-                                            <div class="usy-name">
-                                                <h3>John Doe</h3>
-                                                <span><img src="images/clock.png" alt="">3 min ago</span>
-                                            </div>
-                                        </div>
-                                        <div class="ed-opts">
-                                            <a href="#" title="" class="ed-opts-open">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <ul class="ed-options">
-                                                <li><a href="#" title="">Edit Post</a></li>
-                                                <li><a href="#" title="">Unsaved</a></li>
-                                                <li><a href="#" title="">Unbid</a></li>
-                                                <li><a href="#" title="">Close</a></li>
-                                                <li><a href="#" title="">Hide</a></li>
+                                        <div class="job-status-bar">
+                                            <ul class="like-com">
+                                                <li>
+                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
+                                                    <img src="images/liked-img.png" alt="">
+                                                    <span>@item.like</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="com">
+                                                        <i class="fas fa-comment-alt"></i> Comments
+                                                        15
+                                                    </a>
+                                                </li>
                                             </ul>
+                                            <a href="#"><i class="fas fa-eye"></i>Views @item.view</a>
                                         </div>
                                     </div>
-                                    <div class="epi-sec">
-                                        <ul class="descp">
-                                            <li>
-                                                <img src="images/icon8.png" alt=""><span>Front End Developer</span>
-                                            </li>
-                                            <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                        </ul>
-                                        <ul class="bk-links">
-                                            <li><a href="#" title=""><i class="fas fa-bookmark"></i></a></li>
-                                            <li><a href="#" title=""><i class="fas fa-envelope"></i></a></li>
-                                            <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job_descp">
-                                        <h3>Simple Classified Site</h3>
-                                        <ul class="job-dt">
-                                            <li><span>$300 - $350</span></li>
-                                        </ul>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
-                                            hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit
-                                            amet... <a href="#" title="">view more</a>
-                                        </p>
-                                        <ul class="skill-tags">
-                                            <li><a href="#" title="">HTML</a></li>
-                                            <li><a href="#" title="">PHP</a></li>
-                                            <li><a href="#" title="">CSS</a></li>
-                                            <li><a href="#" title="">Javascript</a></li>
-                                            <li><a href="#" title="">Wordpress</a></li>
-                                            <li><a href="#" title="">Photoshop</a></li>
-                                            <li><a href="#" title="">Illustrator</a></li>
-                                            <li><a href="#" title="">Corel Draw</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job-status-bar">
-                                        <ul class="like-com">
-                                            <li>
-                                                <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
-                                                <img src="images/liked-img.png" alt="">
-                                                <span>25</span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="com">
-                                                    <i class="fas fa-comment-alt"></i> Comments
-                                                    15
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                                    </div>
-                                </div>
-                                <div class="post-bar">
-                                    <div class="post_topbar">
-                                        <div class="usy-dt">
-                                            <img src="images/resources/us-pic.png" alt="">
-                                            <div class="usy-name">
-                                                <h3>John Doe</h3>
-                                                <span><img src="images/clock.png" alt="">3 min ago</span>
-                                            </div>
-                                        </div>
-                                        <div class="ed-opts">
-                                            <a href="#" title="" class="ed-opts-open">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <ul class="ed-options">
-                                                <li><a href="#" title="">Edit Post</a></li>
-                                                <li><a href="#" title="">Unsaved</a></li>
-                                                <li><a href="#" title="">Unbid</a></li>
-                                                <li><a href="#" title="">Close</a></li>
-                                                <li><a href="#" title="">Hide</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="epi-sec">
-                                        <ul class="descp">
-                                            <li>
-                                                <img src="images/icon8.png" alt=""><span>Front End Developer</span>
-                                            </li>
-                                            <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                        </ul>
-                                        <ul class="bk-links">
-                                            <li><a href="#" title=""><i class="fas fa-bookmark"></i></a></li>
-                                            <li><a href="#" title=""><i class="fas fa-envelope"></i></a></li>
-                                            <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job_descp">
-                                        <h3>Ios Shopping mobile app</h3>
-                                        <ul class="job-dt">
-                                            <li><span>$300 - $350</span></li>
-                                        </ul>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
-                                            hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit
-                                            amet... <a href="#" title="">view more</a>
-                                        </p>
-                                        <ul class="skill-tags">
-                                            <li><a href="#" title="">HTML</a></li>
-                                            <li><a href="#" title="">PHP</a></li>
-                                            <li><a href="#" title="">CSS</a></li>
-                                            <li><a href="#" title="">Javascript</a></li>
-                                            <li><a href="#" title="">Wordpress</a></li>
-                                            <li><a href="#" title="">Photoshop</a></li>
-                                            <li><a href="#" title="">Illustrator</a></li>
-                                            <li><a href="#" title="">Corel Draw</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job-status-bar">
-                                        <ul class="like-com">
-                                            <li>
-                                                <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
-                                                <img src="images/liked-img.png" alt="">
-                                                <span>25</span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="com">
-                                                    <i class="fas fa-comment-alt"></i> Comments
-                                                    15
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                                    </div>
-                                </div>
+                                    }
                                 <div class="process-comm">
                                     <div class="spinner">
                                         <div class="bounce1"></div>
@@ -574,7 +347,7 @@
                    target = "UploadTarget"
                }))
             {
-                @Html.Hidden("userid", 12345)
+                @*@Html.Hidden("userid", 12345)*@
                 <div class="row">
                     <div class="col-lg-12">
                         <input type="text" name="title" placeholder="Title">
@@ -585,7 +358,7 @@
                     <div class="col-lg-12">
                     </div>
                     <div class="col-lg-12">
-                        <textarea name="content" placeholder="Content" ></textarea>
+                        <textarea name="content" placeholder="Content"></textarea>
                     </div>
                     <div class="col-lg-12">
                         <div class="input-group-prepend">
@@ -609,18 +382,18 @@
             }
 
             @*<div id="uploadsContainer"></div>
-            <iframe id="UploadTarget" name="UploadTarget" onload="UploadFile_Complete();" style="position: absolute; left: -999em; top: -999em;"></iframe>*@
+                <iframe id="UploadTarget" name="UploadTarget" onload="UploadFile_Complete();" style="position: absolute; left: -999em; top: -999em;"></iframe>*@
         </div>
 
 
-    <a href="#" title=""><i class="far fa-times-circle"></i></a>
+        <a href="#" title=""><i class="far fa-times-circle"></i></a>
     </div>
 </div>
-<script>    
+<script>
     var editor = CodeMirror.fromTextArea(document.getElementById("tagarea"), {
-         //lineNumbers: true,
-         mode: "anhmode",
-         //matchBrackets: true
+        //lineNumbers: true,
+        mode: "anhmode",
+        //matchBrackets: true
     });
     editor.setOption('placeholder', "Each space for tags ex: hobby city");
     $("#UploadForm").submit(function (eventObj) {
@@ -628,4 +401,3 @@
         return true;
     });
 </script>
-

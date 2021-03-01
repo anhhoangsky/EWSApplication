@@ -22,6 +22,8 @@ namespace EWSApplication.Entities.DBContext
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer<EWSDbContext>(null);
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>()
                 .Property(e => e.username)
                 .IsFixedLength();
