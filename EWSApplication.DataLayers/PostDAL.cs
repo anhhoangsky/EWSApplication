@@ -79,10 +79,10 @@ namespace EWSApplication.DataLayers
         /// </summary>
         /// <param name="postId"></param>
         /// <returns></returns>
-        public Comment GetListCommentOfPost(int postId)
+        public List<Comment> GetListCommentOfPost(int postId)
         {
-            Comment cmt = new Comment();
-            cmt = db.Comments.Where(x => x.postid == postId).SingleOrDefault();
+            List<Comment> cmt = new List<Comment>();
+            cmt = db.Comments.Where(x => x.postid == postId).ToList();
             return cmt;
         }
         /// <summary>
@@ -102,7 +102,6 @@ namespace EWSApplication.DataLayers
         /// <returns></returns>
         public bool CreateNewPost(StructurePost data, string filePath)
         {
-            string er = "";
             try
             {
                 Post pst = new Post()
@@ -126,7 +125,27 @@ namespace EWSApplication.DataLayers
             }
             catch (Exception e)
             {
-                er = e.Message;
+                return false;
+            }
+        }
+        public bool CreateNewComment(StructureComment cmtData)
+        {
+            try
+            {
+                Comment cmt = new Comment()
+                {
+                    anonymous = cmtData.anonymous,
+                    Date = DateTime.Now,
+                    Content= cmtData.Content,
+                    postid = cmtData.postid,
+                    userid = cmtData.userid
+                };
+                db.Comments.Add(cmt);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
                 return false;
             }
         }

@@ -55,11 +55,14 @@ namespace EWSApplication.BussinessLayers
         /// </summary>
         /// <param name="postId"></param>
         /// <returns></returns>
-        public static Comment Post_GetListCommentOfPost(int postId)
+        public static List<Comment> Post_GetListCommentOfPost(int postId)
         {
             return pstDAL.GetListCommentOfPost(postId);
         }
-        
+        public static bool Post_CreateNewComment(StructureComment cmtData)
+        {
+            return pstDAL.CreateNewComment(cmtData);
+        }
         /// <summary>
         /// Tạo mới bài post
         /// </summary>
