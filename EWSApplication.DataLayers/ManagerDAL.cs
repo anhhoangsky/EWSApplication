@@ -1,6 +1,8 @@
-﻿using EWSApplication.Entities.DBContext;
+﻿using EWSApplication.DataLayers.Common;
+using EWSApplication.Entities.DBContext;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +52,44 @@ namespace EWSApplication.DataLayers
             catch (Exception e)
             {
                 return false;
+            }
+        }
+        #endregion
+        #region download tệp đính kèm
+        public List<ObjFile> GetAllFileToDownload()
+        {
+            List<ObjFile> ObjFiles = new List<ObjFile>();
+            var listPath = from s in db.Posts
+                           select s.filePath;
+            foreach (string strfile in listPath)
+            {
+                FileInfo fi = new FileInfo(strfile);
+                ObjFile obj = new ObjFile();
+                obj.File = fi.Name;
+                obj.Size = fi.Length;
+                obj.Type = GetFileTypeByExtension(fi.Extension);
+                ObjFiles.Add(obj);
+            }
+            return ObjFiles;
+        }
+        
+        private string GetFileTypeByExtension(string fileExtension)
+        {
+            switch (fileExtension.ToLower())
+            {
+                case ".docx":
+                case ".doc":
+                    return "Microsoft Word Document";
+                case ".xlsx":
+                case ".xls":
+                    return "Microsoft Excel Document";
+                case ".txt":
+                    return "Text Document";
+                case ".jpg":
+                case ".png":
+                    return "Image";
+                default:
+                    return "Unknown";
             }
         }
         #endregion
