@@ -29,7 +29,7 @@ namespace EWSApplication.BussinessLayers
         /// lấy top 5 bài post phổ biến
         /// </summary>
         /// <returns></returns>
-        public static List<Post> Post_GetTopPopularPost()
+        public static List<StructurePostToRender> Post_GetTopPopularPost()
         {
             return pstDAL.GetTopPopularPost();
         }
@@ -37,7 +37,7 @@ namespace EWSApplication.BussinessLayers
         /// lấy top 5 bài post nhiều view nhất
         /// </summary>
         /// <returns></returns>
-        public static List<Post> Post_GetTopViewPost()
+        public static List<StructurePostToRender> Post_GetTopViewPost()
         {
             return pstDAL.GetTopViewPost();
         }

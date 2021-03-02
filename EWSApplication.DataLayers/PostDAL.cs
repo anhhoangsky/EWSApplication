@@ -22,8 +22,6 @@ namespace EWSApplication.DataLayers
         public List<StructurePostToRender> GetAllPost(int page , int pageSize)
         {
             #region use LinQ
-            ////List<Post> lst = new List<Post>();
-            ////lst = db.Posts.ToList();
             //var list = (from p in db.Posts
             //         join u in db.Users
             //         on p.userid equals u.userid
@@ -92,21 +90,96 @@ namespace EWSApplication.DataLayers
         /// lấy top 5 bài post phổ biến
         /// </summary>
         /// <returns></returns>
-        public List<Post> GetTopPopularPost()
+        public List<StructurePostToRender> GetTopPopularPost()
         {
-            List<Post> lst = new List<Post>();
-            lst = db.Posts.OrderByDescending(x => x.like).Take(5).ToList();
+            List<StructurePostToRender> lst = new List<StructurePostToRender>();
+            //lst = db.Posts.OrderByDescending(x => x.like).Take(5).ToList();
+            var list = (from p in db.Posts
+                        join u in db.UserAccounts
+                        on p.userid equals u.userid
+                        orderby p.like descending
+                        select new
+                        {
+                            postid = p.postid,
+                            title = p.title,
+                            anonymous = p.anonymous,
+                            tag = p.tag,
+                            userid = p.userid,
+                            content = p.content,
+                            view = p.view,
+                            like = p.like,
+                            dislike = p.dislike,
+                            datetimepost = p.datetimepost,
+                            filepath = p.filePath,
+                            username = u.username
+                        }).Take(5).ToList();
+            foreach(var item in list)
+            {
+                lst.Add(new StructurePostToRender
+                {
+                    postid = item.postid,
+                    title = item.title,
+                    anonymous = item.anonymous,
+                    tag = item.tag,
+                    userid = item.userid,
+                    content = item.content,
+                    view = item.view,
+                    like = item.like,
+                    dislike = item.dislike,
+                    datetimepost = item.datetimepost,
+                    filePath = item.filepath,
+                    username = item.username
+                });
+            }
             return lst;
         }
         /// <summary>
         /// lấy top 5 bài post nhiều view nhất
         /// </summary>
         /// <returns></returns>
-        public List<Post> GetTopViewPost()
+        public List<StructurePostToRender> GetTopViewPost()
         {
-            List<Post> lst = new List<Post>();
-            lst = db.Posts.OrderByDescending(x => x.view).Take(5).ToList();
+            List<StructurePostToRender> lst = new List<StructurePostToRender>();
+            //lst = db.Posts.OrderByDescending(x => x.like).Take(5).ToList();
+            var list = (from p in db.Posts
+                        join u in db.UserAccounts
+                        on p.userid equals u.userid
+                        orderby p.view descending
+                        select new
+                        {
+                            postid = p.postid,
+                            title = p.title,
+                            anonymous = p.anonymous,
+                            tag = p.tag,
+                            userid = p.userid,
+                            content = p.content,
+                            view = p.view,
+                            like = p.like,
+                            dislike = p.dislike,
+                            datetimepost = p.datetimepost,
+                            filepath = p.filePath,
+                            username = u.username
+                        }).Take(5).ToList();
+            foreach (var item in list)
+            {
+                lst.Add(new StructurePostToRender
+                {
+                    postid = item.postid,
+                    title = item.title,
+                    anonymous = item.anonymous,
+                    tag = item.tag,
+                    userid = item.userid,
+                    content = item.content,
+                    view = item.view,
+                    like = item.like,
+                    dislike = item.dislike,
+                    datetimepost = item.datetimepost,
+                    filePath = item.filepath,
+                    username = item.username
+                });
+            }
             return lst;
+
         }
         /// <summary>
         /// lấy top bài post lastest

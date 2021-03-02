@@ -45,14 +45,14 @@ namespace EWSApplication.Controllers
                
                 lst = PostBLL.Post_GetAllPost( page,  pageSize);
             }
-            //if (mode == "popular")
-            //{
-            //    lst =PostBLL.Post_GetTopPopularPost();
-            //}
-            //if (mode == "topview")
-            //{
-            //    lst= PostBLL.Post_GetTopViewPost();
-            //}
+            if (mode == "popular")
+            {
+                lst = PostBLL.Post_GetTopPopularPost();
+            }
+            if (mode == "topview")
+            {
+                lst = PostBLL.Post_GetTopViewPost();
+            }
             //if (mode == "lastest")
             //{
             //    lst= PostBLL.Post_GetTopLastPost();
