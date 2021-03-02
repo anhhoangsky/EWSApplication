@@ -1,4 +1,5 @@
 ﻿using EWSApplication.DataLayers;
+using EWSApplication.DataLayers.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,10 @@ namespace EWSApplication.BussinessLayers
         public bool Manager_DeleteTag(string tagID)
         {
             return ManagerDAL.DeleteTag(tagID);
+        }
+        public static List<ObjFile> Manager_GetAllFileToDownload()
+        {
+            return ManagerDAL.GetAllFileToDownload();
         }
     }
 }
