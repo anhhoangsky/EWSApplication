@@ -6,9 +6,11 @@ namespace EWSApplication.Entities.DBContext
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("User")]
-    public partial class User
+    [Table("UserAccount")]
+    public partial class UserAccount
     {
+        [Key]
+        [Required]
         public int userid { get; set; }
 
         [Required]

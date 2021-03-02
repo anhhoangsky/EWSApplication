@@ -57,7 +57,7 @@
     <Compile Include="DBContext\Role.cs" />
     <Compile Include="DBContext\Student.cs" />
     <Compile Include="DBContext\Tag.cs" />
-    <Compile Include="DBContext\User.cs" />
+    <Compile Include="DBContext\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -17,45 +19,59 @@ namespace EWSApplication.DataLayers
         /// lấy danh sách tất cả bài post để hiển thị trên Home
         /// </summary>
         /// <returns></returns>
-        public List<StructurePostToRender> GetAllPost()
+        public List<StructurePostToRender> GetAllPost(int page , int pageSize)
         {
-            List<Post> lst = new List<Post>();
-            lst = db.Posts.ToList();
-            var list = (from p in db.Posts
-                     join u in db.Users
-                     on p.userid equals u.userid
-                     select new
-                     {
-                         postid = p.postid,
-                         title = p.title,
-                         anonymous = p.anonymous,
-                         tag = p.tag,
-                         userid = p.userid,
-                         content = p.content,
-                         view = p.view,
-                         like = p.like,
-                         dislike = p.dislike,
-                         datetimepost = p.datetimepost,
-                         filepath = p.filePath,
-                         username = u.username
-                     }).ToList();
+            #region use LinQ
+            ////List<Post> lst = new List<Post>();
+            ////lst = db.Posts.ToList();
+            //var list = (from p in db.Posts
+            //         join u in db.Users
+            //         on p.userid equals u.userid
+            //         select new
+            //         {
+            //             postid = p.postid,
+            //             title = p.title,
+            //             anonymous = p.anonymous,
+            //             tag = p.tag,
+            //             userid = p.userid,
+            //             content = p.content,
+            //             view = p.view,
+            //             like = p.like,
+            //             dislike = p.dislike,
+            //             datetimepost = p.datetimepost,
+            //             filepath = p.filePath,
+            //             username = u.username
+            //         }).ToList();
+            #endregion
+            int startPos = (page - 1) * pageSize + 1;
+            int endPos = startPos + pageSize - 1;
+
+            SqlConnection connect = new SqlConnection("server=.;user id=sa;password=123;database=EWS");
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "select * from (select p.*,u.username, ROW_NUMBER() OVER(ORDER BY postid ASC) AS RowNumber from Post as p INNER JOIN UserAccount as u on u.userid = p.userid) as t where t.RowNumber BETWEEN @StartPos AND @EndPos";
+            command.CommandType = CommandType.Text;
+            command.Connection = connect;
+            connect.Open(); // mở kết nối
+            command.Parameters.AddWithValue("@StartPos", startPos);
+            command.Parameters.AddWithValue("@EndPos", endPos);
+            SqlDataReader read = command.ExecuteReader(CommandBehavior.CloseConnection);
             List<StructurePostToRender> data = new List<StructurePostToRender>();
-            foreach (var item in list)
+            while (read.Read())
             {
                 data.Add(new StructurePostToRender
                 {
-                    postid = item.postid,
-                    title = item.title,
-                    anonymous = item.anonymous,
-                    tag = item.tag,
-                    userid = item.userid,
-                    content = item.content,
-                    view = item.view,
-                    like = item.like,
-                    dislike = item.dislike,
-                    datetimepost = item.datetimepost,
-                    filePath = item.filepath,
-                    username = item.username
+                    postid = Convert.ToInt32(read["postid"]),
+                    title = Convert.ToString(read["title"]),
+                    anonymous = Convert.ToBoolean(read["anonymous"]),
+                    tag = Convert.ToString(read["tag"]),
+                    userid = Convert.ToInt32(read["userid"]),
+                    content = Convert.ToString(read["content"]),
+                    view = Convert.ToInt32(read["view"]),
+                    like = Convert.ToInt32(read["like"]),
+                    dislike = Convert.ToInt32(read["dislike"]),
+                    datetimepost = Convert.ToDateTime(read["datetimepost"]),
+                    filePath = Convert.ToString(read["filePath"]),
+                    username = Convert.ToString(read["username"])
                 });
             }
             return data;
@@ -121,7 +137,7 @@ namespace EWSApplication.DataLayers
             //List<Comment> cmt = new List<Comment>();
             //cmt = db.Comments.Where(x => x.postid == postId).ToList();
             var list = (from c in db.Comments
-                        join u in db.Users
+                        join u in db.UserAccounts
                         on c.userid equals u.userid
                         select new
                         {

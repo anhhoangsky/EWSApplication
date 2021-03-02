@@ -14,17 +14,36 @@ namespace EWSApplication.Controllers
     public class HomeController : Controller
     {
         
-        public ActionResult Index(string mode = "all")
+        public ActionResult Index(string mode = "all", int page = 1)
         {
             List<StructurePostToRender> lst = new List<StructurePostToRender>();
+            EWSDbContext db = new EWSDbContext();
+            int pageSize = 2;
+            int rowCount = (from s in db.Posts select s).Count();
+            int pageCount = rowCount / pageSize;
+            ViewBag.pageCount = rowCount / pageSize;
+            if (rowCount % pageSize > 0)
+            {
+                ViewBag.pageCount = rowCount / pageSize + 1;
+                pageCount = rowCount / pageSize + 1;
+            }
+            if (page > pageCount)
+            {
+                page = pageCount;
+            }
+            if (page <= 0)
+            {
+                page = 1;
+            }
             // xử lí mode render
             // mode = all ->> GetAllPost
             // mode = popular ->> GetTopPopularPost
             // mode = topview ->> GetTopViewpost
             // mode = lastest ->> GetTopLastPost
-            if(mode == "all")
+            if (mode == "all")
             {
-                lst= PostBLL.Post_GetAllPost();
+               
+                lst = PostBLL.Post_GetAllPost( page,  pageSize);
             }
             //if (mode == "popular")
             //{
@@ -79,6 +98,7 @@ namespace EWSApplication.Controllers
             Session["uid"] = userInfo.userid;
             Session["uname"] = userInfo.username;
             Session["ufacultyid"] = userInfo.facultyid;
+            Session["uroleid"] = userInfo.roleid;
             FormsAuthentication.SetAuthCookie("isLogin", false);
             return RedirectToAction("Index", "Home");
 
@@ -86,6 +106,7 @@ namespace EWSApplication.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
+            FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Home");
         }
     }

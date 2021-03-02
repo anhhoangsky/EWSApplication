@@ -11,10 +11,10 @@ namespace EWSApplication.DataLayers
     public class SystemDAL
     {
         EWSDbContext db = new EWSDbContext();
-        public User Login(string userName, string password)
+        public UserAccount Login(string userName, string password)
         {
-            User data = null;
-            data = db.Users.Where(x => (x.username == userName && x.password == password) ).FirstOrDefault<User>();
+            UserAccount data = null;
+            data = db.UserAccounts.Where(x => (x.username == userName && x.password == password) ).FirstOrDefault<UserAccount>();
             return data;
         }
     }
