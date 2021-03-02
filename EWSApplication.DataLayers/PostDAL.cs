@@ -46,7 +46,7 @@ namespace EWSApplication.DataLayers
             int startPos = (page - 1) * pageSize + 1;
             int endPos = startPos + pageSize - 1;
 
-            SqlConnection connect = new SqlConnection("server=.;user id=sa;password=123;database=EWS");
+            SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EWS.mdf;");
             SqlCommand command = new SqlCommand();
             command.CommandText = "select * from (select p.*,u.username, ROW_NUMBER() OVER(ORDER BY postid ASC) AS RowNumber from Post as p INNER JOIN UserAccount as u on u.userid = p.userid) as t where t.RowNumber BETWEEN @StartPos AND @EndPos";
             command.CommandType = CommandType.Text;

@@ -139,6 +139,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\EWS.mdf" />
+    <Content Include="App_Data\EWS_log.ldf">
+      <DependentUpon>EWS.mdf</DependentUpon>
+    </Content>
     <Content Include="Assets\css\all.min.css" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
@@ -215,7 +219,6 @@
     <Content Include="Views\Post\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Files\" />
     <Folder Include="Models\" />
   </ItemGroup>
