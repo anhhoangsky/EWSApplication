@@ -52,7 +52,9 @@ namespace EWSApplication
                             "~/Assets/lib/codemirror/codemirror.js",
                             "~/Assets/lib/codemirror/simple.js",
                             "~/Assets/lib/codemirror/placeholder.js",
-                            "~/Assets/lib/codemirror/anhmode.js"));
+                            "~/Assets/lib/codemirror/anhmode.js",
+                            "~/Assets/lib/countdown/countdown.js"
+                            ));
            
         }
     }

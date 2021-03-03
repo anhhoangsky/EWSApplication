@@ -221,11 +221,9 @@
         <div class="container">
             <div class="forum-links">
                 <ul>
-                    <li class="active"><a href="#" title="">Latest</a></li>
-                    <li><a href="#" title="">Unanswered</a></li>
-                    <li><a href="#" title="">Trending</a></li>
-                    <li><a href="#" title="">Popular This Week</a></li>
-                    <li><a href="#" title="">Popular of Month</a></li>
+                    <li class=" @if (Request.Params["mode"] == "all") {@Html.Raw("active")}"><a href="@Url.Action("Index","Home")?mode=all" title="">All</a></li>
+                    <li class="@if (Request.Params["mode"] == "popular") {@Html.Raw("active")}"><a href="@Url.Action("Index","Home")?mode=popular" title="">Popular</a></li>
+                    <li class="@if (Request.Params["mode"] == "topview") {@Html.Raw("active")}"><a href="@Url.Action("Index","Home")?mode=topview" title="">Top View</a></li>
                 </ul>
             </div>
             <div class="forum-links-btn">

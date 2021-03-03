@@ -24,6 +24,7 @@ namespace EWSApplication.Controllers
             ViewBag.pageCount = rowCount / pageSize;
             ViewBag.pageSize = pageSize;
             ViewBag.pageCur = page;
+            ViewBag.mode = mode;
             if (rowCount % pageSize > 0)
             {
                 ViewBag.pageCount = rowCount / pageSize + 1;
@@ -64,7 +65,6 @@ namespace EWSApplication.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
