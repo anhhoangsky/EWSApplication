@@ -9,7 +9,7 @@ namespace EWSApplication.DataLayers.Common
     public class StructureComment
     {
 
-        public bool anonymous { get; set; }
+        public string anonymous { get; set; }
 
         public DateTime Date { get; set; }
 

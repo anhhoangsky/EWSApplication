@@ -4,6 +4,7 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@Scripts.Render("~/bundles/countdown")
 
 <section class="forum-page">
     <div class="container">
@@ -27,13 +28,14 @@
                                         {
                                             if (@tag != "")
                                             {
-                                            <li><a href="#" title="">@tag</a></li>
-                                                }
-                                            } }
+                                                <li><a href="#" title="">@tag</a></li>
+                                            }
+                                        } }
                                 </ul>
                                 <p>@Model.content</p>
-                                @if(@ViewBag.ListComt.Count > 0){
-                                
+                                @if (@ViewBag.ListComt.Count > 0)
+                                {
+
                                     <div class="comment-section">
                                         <h3>@ViewBag.ListComt.Count Comments</h3>
                                         <div class="comment-sec">
@@ -46,13 +48,16 @@
                                                                 <img src="images/resources/bg-img1.png" alt="">
                                                             </div>
                                                             <div class="comment">
-                                                                <h3>@cmt.username</h3>
+                                                                <h3>@if (@cmt.anonymous == true)
+                                                                {@("Anonymous")}
+                                                                else
+                                                                {@cmt.username}</h3>
                                                                 <span><img src="images/clock.png" alt=""> 3 min ago</span>
                                                                 <p>@cmt.Content</p>
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    
+
                                                 }
                                             </ul>
 
@@ -71,14 +76,14 @@
                             <div class="post_comment_sec">
                                 <form action="~/Post/NewComment" method="post">
                                     @*<input type="hidden" name="iduser" value="12345" />
-                                    <input type="hidden" name="idpost" value="54312" />*@
+                                        <input type="hidden" name="idpost" value="54312" />*@
                                     <textarea placeholder="Your Answer" name="Content" style="float:none"></textarea>
                                     <br>
-                                        <div class="slideThree" style="margin:0; padding:0">
-                                            <input type="checkbox" value="None" id="slideThree" name="anonymous" />
-                                            <label for="slideThree">Anonymous</label>
-                                        </div>
-                                    <button type="submit">Post Answer</button>
+                                    <div class="slideThree" style="margin:0; padding:0">
+                                        <input type="checkbox" value="None" id="slideThree" name="anonymous" />
+                                        <label for="slideThree">Anonymous</label>
+                                    </div>
+                                    <button type="submit" id="post_answer">Post Answer</button>
                                 </form>
                             </div>
                         </div>
@@ -170,3 +175,26 @@
         </div>
     </div>
 </section>
+<script>
+    document.getElementById("post_answer").addEventListener("submit", function (event) {
+        event.preventDefault()
+    });
+    var timerId =
+        countdown(
+            new Date(2021, 2, 3, 17, 20),
+            function (ts) {
+                if (ts.value > 0) {
+                    window.clearInterval(timerId);
+                    document.getElementById('post_answer').innerHTML = "Post answer";
+                    document.getElementById("post_answer").addEventListener("submit", function (event) {
+                        return true;
+                    });
+                }
+                else {
+                    document.getElementById('post_answer').innerHTML = ts.toHTML("strong");
+                }
+            },
+            Date.now(),
+            2, 0,
+            (countdown.MINUTES | countdown.SECONDS & ~countdown.MILLISECONDS) | (countdown.HOURS & countdown.MINUTES)|(countdown.SECONDS & ~countdown.MILLISECONDS) | (countdown.YEARS & countdown.DAYS & ~countdown.MINUTES));
+</script>

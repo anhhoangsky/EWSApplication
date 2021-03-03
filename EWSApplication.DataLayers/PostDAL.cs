@@ -288,7 +288,7 @@ namespace EWSApplication.DataLayers
             {
                 Comment cmt = new Comment()
                 {
-                    anonymous = cmtData.anonymous,
+                    anonymous = cmtData.anonymous=="on",
                     Date = DateTime.Now,
                     Content= cmtData.Content,
                     postid = cmtData.postid,

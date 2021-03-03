@@ -35,14 +35,6 @@ namespace EWSApplication.Controllers
             cmtData.userid = Convert.ToInt32(Session["uid"]);
             cmtData.postid = Convert.ToInt32(TempData["postIdFromDetails"]);
             //gồm nội dung comment và id người gửi + id bài post...
-            if (cmtData.anonymous != null)
-            {
-                cmtData.anonymous = true;
-            }
-            else
-            {
-                cmtData.anonymous = false;
-            }
             PostBLL.Post_CreateNewComment(cmtData);
             return RedirectToAction("Index","Home");
         }

@@ -6,6 +6,7 @@
 
 @Styles.Render("~/Assets/codemirror")
 @Scripts.Render("~/bundles/codemirror")
+@Scripts.Render("~/bundles/countdown")
 
 <div class="search-sec">
     <div class="container">
@@ -205,7 +206,10 @@
                                             <div class="usy-dt">
                                                 <img src="images/resources/us-pic.png" alt="">
                                                 <div class="usy-name">
-                                                    <h3>@if(@item.anonymous==true){@Html.Raw("Anonymous")}else{@item.username}</h3>
+                                                    <h3>@if (@item.anonymous == true)
+                                                    {@("Anonymous")}
+                                                    else
+                                                    {@item.username}</h3>
                                                     <span><img src="images/clock.png" alt="">3 min ago</span>
                                                 </div>
                                             </div>
@@ -429,46 +433,46 @@
                    target = "UploadTarget"
                }))
             {
-            <div class="row">
-                <div class="col-lg-12">
-                    <input type="text" name="title" placeholder="Title">
-                </div>
-                <div class="col-lg-12">
-                    <textarea id='tagarea' name="tag" id="tag"></textarea>
-                </div>
-                <div class="col-lg-12">
-                </div>
-                <div class="col-lg-12">
-                    <textarea name="content" placeholder="Content"></textarea>
-                </div>
-                <div class="col-lg-12">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Upload</span>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="text" name="title" placeholder="Title">
                     </div>
-                    <input type="file" class="custom-file-input" style="padding: 0px 1px; margin-left:0px " id="files" name="files" multiple="multiple">
-                </div>
-                <div class="col-lg-12">
-                    <div class="slideThree">
-                        <input type="checkbox" id="slideThree" name="anonymous" />
-                        <label for="slideThree">Anonymous</label>
+                    <div class="col-lg-12">
+                        <textarea id='tagarea' name="tag" id="tag"></textarea>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div>
+                    <div class="col-lg-12">
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea name="content" placeholder="Content"></textarea>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <input type="file" class="custom-file-input" style="padding: 0px 1px; margin-left:0px " id="files" name="files" multiple="multiple">
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="slideThree">
+                            <input type="checkbox" id="slideThree" name="anonymous" />
+                            <label for="slideThree">Anonymous</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div>
                             <input type="radio" id="agree" name="agree" style="width:auto;height: 19px; float:left; margin:0px 10px 0px 0px" class="no-pdd" />
                             <label for="agree">
                                 <span></span>
                                 <small>I agree <a href="@Url.Action("About","Home")">terms and conditions</a></small>
                             </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <ul>
+                            <li><button class="active" type="submit" value="post" id="post_submit" disabled>Post</button></li>
+                            <li><a href="#" id="cancel-project_post" title="">Cancel</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <ul>
-                        <li><button class="active" type="submit" value="post" id="post_submit" disabled>Post</button></li>
-                        <li><a href="#" id="cancel-project_post" title="">Cancel</a></li>
-                    </ul>
-                </div>
-            </div>
             }
         </div>
 
@@ -501,10 +505,10 @@
                     });
                 }
                 else {
-                document.getElementById('post_submit').innerHTML = ts.toHTML("strong");
+                    document.getElementById('post_submit').innerHTML = ts.toHTML("strong");
                 }
             },
             Date.now(),
-            2,0,
-            (countdown.HOURS & countdown.MINUTES & ~countdown.MILLISECONDS) & ~(countdown.MINUTES & countdown.SECONDS | ~countdown.MILLISECONDS) );
+            2, 0,
+            (countdown.MINUTES | countdown.SECONDS & ~countdown.MILLISECONDS) | (countdown.HOURS & countdown.MINUTES) | (countdown.SECONDS & ~countdown.MILLISECONDS) | (countdown.YEARS & countdown.DAYS & ~countdown.MINUTES));
 </script>
