@@ -490,18 +490,18 @@
     document.getElementById("agree").addEventListener("change", () => {
         document.getElementById("post_submit").removeAttribute("disabled");
     })
-    document.getElementById("post_submit").addEventListener("submit", function (event) {
+    document.getElementById("post_submit").addEventListener("click", function (event) {
         event.preventDefault()
     });
     var timerId =
         countdown(
-            new Date(2021, 2, 3, 15, 50),
+            new Date(2021, 2, 3, 17, 49),
             function (ts) {
                 if (ts.value > 0) {
                     window.clearInterval(timerId);
                     document.getElementById('post_submit').innerHTML = "Post";
-                    document.getElementById("post_submit").addEventListener("submit", function (event) {
-                        return true;
+                    document.getElementById("post_submit").addEventListener("click", function (event) {
+                        document.getElementById("UploadForm").submit();
                     });
                 }
                 else {
@@ -510,5 +510,5 @@
             },
             Date.now(),
             2, 0,
-            (countdown.MINUTES | countdown.SECONDS & ~countdown.MILLISECONDS) | (countdown.HOURS & countdown.MINUTES) | (countdown.SECONDS & ~countdown.MILLISECONDS) | (countdown.YEARS & countdown.DAYS & ~countdown.MINUTES));
+            countdown.HOURS | countdown.MINUTES | countdown.SECONDS | ~countdown.MILLISECONDS);
 </script>

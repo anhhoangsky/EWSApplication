@@ -74,7 +74,7 @@
                                 <img src="images/resources/bg-img2.png" alt="">
                             </div>
                             <div class="post_comment_sec">
-                                <form action="~/Post/NewComment" method="post">
+                                <form action="~/Post/NewComment" method="post" id="cmt_form">
                                     @*<input type="hidden" name="iduser" value="12345" />
                                         <input type="hidden" name="idpost" value="54312" />*@
                                     <textarea placeholder="Your Answer" name="Content" style="float:none"></textarea>
@@ -83,7 +83,7 @@
                                         <input type="checkbox" value="None" id="slideThree" name="anonymous" />
                                         <label for="slideThree">Anonymous</label>
                                     </div>
-                                    <button type="submit" id="post_answer">Post Answer</button>
+                                    <button id="post_answer" value="post">Post Answer</button>
                                 </form>
                             </div>
                         </div>
@@ -176,18 +176,19 @@
     </div>
 </section>
 <script>
-    document.getElementById("post_answer").addEventListener("submit", function (event) {
-        event.preventDefault()
+    document.getElementById("post_answer").addEventListener("click", function (event) {
+        event.preventDefault();
     });
+
     var timerId =
         countdown(
-            new Date(2021, 2, 3, 17, 20),
+            new Date(2021, 2, 3, 16, 44),
             function (ts) {
                 if (ts.value > 0) {
                     window.clearInterval(timerId);
                     document.getElementById('post_answer').innerHTML = "Post answer";
-                    document.getElementById("post_answer").addEventListener("submit", function (event) {
-                        return true;
+                    document.getElementById("post_answer").addEventListener("click", function (event) {
+                        document.getElementById("cmt_form").submit();
                     });
                 }
                 else {
@@ -196,5 +197,5 @@
             },
             Date.now(),
             2, 0,
-            (countdown.MINUTES | countdown.SECONDS & ~countdown.MILLISECONDS) | (countdown.HOURS & countdown.MINUTES)|(countdown.SECONDS & ~countdown.MILLISECONDS) | (countdown.YEARS & countdown.DAYS & ~countdown.MINUTES));
+            countdown.HOURS | countdown.MINUTES | countdown.SECONDS & ~countdown.MILLISECONDS);
 </script>
