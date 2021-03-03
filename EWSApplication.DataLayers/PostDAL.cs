@@ -212,6 +212,7 @@ namespace EWSApplication.DataLayers
             var list = (from c in db.Comments
                         join u in db.UserAccounts
                         on c.userid equals u.userid
+                        where c.postid == postId
                         select new
                         {
                             commentid = c.commentid,
