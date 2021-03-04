@@ -119,5 +119,11 @@ namespace EWSApplication.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Home");
         }
+        [HttpPost]
+        public ActionResult Register(UserAccount acc)
+        {
+            SystemBLL.System_CreateNewAccount(acc);
+            return RedirectToAction("Login", "Home");
+        }
     }
 }

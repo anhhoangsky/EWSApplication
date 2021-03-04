@@ -54,6 +54,12 @@ namespace EWSApplication.DataLayers
                 return false;
             }
         }
+        public List<Tag> GetListTag()
+        {
+            List<Tag> data = new List<Tag>();
+            data = db.Tags.ToList();
+            return data;
+        }
         #endregion
         #region download tệp đính kèm
         public List<ObjFile> GetAllFileToDownload()

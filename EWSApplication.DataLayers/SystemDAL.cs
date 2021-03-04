@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EWSApplication.DataLayers.Common;
 using EWSApplication.Entities;
 using EWSApplication.Entities.DBContext;
 
@@ -51,6 +52,36 @@ namespace EWSApplication.DataLayers
             {
                 return false;
             }
+        }
+        public List<StructureAccountToRender> GetListInfoAccount()
+        {
+            List<Comment> cmt = new List<Comment>();
+            //cmt = db.Co mments.Where(x => x.postid == postId).ToList();
+            var list =  (from r in db.Roles
+                        join u in db.UserAccounts on r.roleid equals u.roleid
+                        join f in db.Faculties on u.facultyid equals f.facultyid
+                        select new
+                        {
+                            u.userid,
+                            u.username,
+                            u.email,
+                            r.rolename,
+                            f.facultyname
+                        }).ToList();
+            List<StructureAccountToRender> data = new List<StructureAccountToRender>();
+            foreach (var c in list)
+            {
+                data.Add(new StructureAccountToRender
+                {
+                    userid = c.userid,
+                    username = c.username,
+                    email = c.email,
+                    rolename = c.rolename,
+                    facultyname = c.facultyname
+                });
+            }
+            return data;
+
         }
 
     }

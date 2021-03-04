@@ -22,8 +22,7 @@ namespace EWSApplication.Entities.DBContext
         public string password { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string roleid { get; set; }
+        public int roleid { get; set; }
 
         [StringLength(100)]
         public string username { get; set; }
