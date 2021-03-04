@@ -16,6 +16,11 @@ namespace EWSApplication.Controllers
         {
             return View();
         }
+        
+        public ActionResult tag()
+        {
+            return View();
+        }
 
         public ActionResult Download()
         {

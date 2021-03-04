@@ -223,6 +223,7 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Home\MostView.cshtml" />
     <Content Include="Views\Home\Popular.cshtml" />
+    <Content Include="Views\Manager\Tag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
