@@ -17,5 +17,41 @@ namespace EWSApplication.DataLayers
             data = db.UserAccounts.Where(x => (x.username == userName && x.password == password) ).FirstOrDefault<UserAccount>();
             return data;
         }
+        public bool CreateNewAccount(UserAccount acc)
+        {
+            try
+            {
+                UserAccount newacc = new UserAccount()
+                {
+                   email = acc.email,
+                   password  = acc.password,
+                   username = acc.username,
+                   roleid = acc.roleid,
+                   facultyid = acc.facultyid
+                };
+                db.UserAccounts.Add(newacc);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool DeteleNewAccount(int userid)
+        {
+            try
+            {
+                UserAccount acc= db.UserAccounts.Where(x => x.userid == userid).SingleOrDefault();
+                db.UserAccounts.Remove(acc);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
     }
 }

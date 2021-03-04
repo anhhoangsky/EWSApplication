@@ -93,5 +93,8 @@ namespace EWSApplication.DataLayers
             }
         }
         #endregion
+        #region phân tích thống kê
+
+        #endregion
     }
 }
