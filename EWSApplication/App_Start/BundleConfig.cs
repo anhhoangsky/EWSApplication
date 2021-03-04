@@ -56,6 +56,10 @@ namespace EWSApplication
                             ));
             bundles.Add(new ScriptBundle("~/bundles/countdown").Include("~/Assets/lib/countdown/countdown.js")
                 );
+            bundles.Add(new StyleBundle("~/bundles/table").Include(
+                             "~/Assets/css/table.css"          
+                ));
+
            
         }
     }

@@ -172,7 +172,7 @@
                 <div class="user-account">
                     <div class="user-info">
                         <img src="~/Assets/images/resources/user.jpg" style="height:30px;width:30px" alt="">
-                        <a href="#" title="">John</a>
+                        <a href="#" title="">@ViewBag.userName</a>
                         <i class="fas fa-sort-down"></i>
                     </div>
                     <div class="user-account-settingss">
@@ -221,7 +221,7 @@
         <div class="container">
             <div class="forum-links">
                 <ul>
-                    <li class=" @if (Request.Params["mode"] == "all") {@Html.Raw("active")}"><a href="@Url.Action("Index","Home")?mode=all" title="">All</a></li>
+                    <li class=" @if (Request.Params["mode"] == "all") {@Html.Raw("active")}"><a href="@Url.Action("Index","Home")?mode=all" title="">Total</a></li>
                     <li class="@if (Request.Params["mode"] == "popular") {@Html.Raw("active")}"><a href="@Url.Action("Index","Home")?mode=popular" title="">Popular</a></li>
                     <li class="@if (Request.Params["mode"] == "topview") {@Html.Raw("active")}"><a href="@Url.Action("Index","Home")?mode=topview" title="">Top View</a></li>
                 </ul>

@@ -22,9 +22,13 @@ namespace EWSApplication.Controllers
             int rowCount = (from s in db.Posts select s).Count();
             int pageCount = rowCount / pageSize;
             ViewBag.pageCount = rowCount / pageSize;
-            ViewBag.pageSize = pageSize;
+            //ViewBag.pageSize = pageSize;
             ViewBag.pageCur = page;
-            ViewBag.mode = mode;
+            //ViewBag.mode = mode;
+            ViewBag.userId = Session["uid"];
+            ViewBag.userName = Session["uname"];
+            ViewBag.ufacultyid = Session["ufacultyid"];
+            ViewBag.uroleid = Session["uroleid"];
             if (rowCount % pageSize > 0)
             {
                 ViewBag.pageCount = rowCount / pageSize + 1;
@@ -38,11 +42,6 @@ namespace EWSApplication.Controllers
             {
                 page = 1;
             }
-            // xử lí mode render
-            // mode = all ->> GetAllPost
-            // mode = popular ->> GetTopPopularPost
-            // mode = topview ->> GetTopViewpost
-            // mode = lastest ->> GetTopLastPost
             if (mode == "all")
             {
                
@@ -56,10 +55,6 @@ namespace EWSApplication.Controllers
             {
                 lst = PostBLL.Post_GetTopViewPost();
             }
-            //if (mode == "lastest")
-            //{
-            //    lst= PostBLL.Post_GetTopLastPost();
-            //}
             return View(lst);
         }
 
@@ -74,6 +69,19 @@ namespace EWSApplication.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult MostView()
+        {
+            List<StructurePostToRender> lst = new List<StructurePostToRender>();
+            lst = PostBLL.Post_GetTopViewPost();
+            return View(lst);
+        }
+        public ActionResult Popular()
+        {
+            List<StructurePostToRender> lst = new List<StructurePostToRender>();
+            lst = PostBLL.Post_GetTopPopularPost();
+            return View(lst);
         }
         [AllowAnonymous]
         [HttpGet]

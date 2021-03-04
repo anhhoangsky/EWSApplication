@@ -141,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\EWS.mdf" />
+    <Content Include="App_Data\EWS_log.ldf">
+      <DependentUpon>EWS.mdf</DependentUpon>
+    </Content>
     <Content Include="Assets\css\all.min.css" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
@@ -149,6 +152,7 @@
     <Content Include="Assets\css\responsive.css" />
     <Content Include="Assets\css\site.css" />
     <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\css\table.css" />
     <Content Include="Assets\images\clock.png" />
     <Content Include="Assets\images\cm-logo.png" />
     <Content Include="Assets\images\cm-main-img.png" />
@@ -216,11 +220,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Post\Detail.cshtml" />
+    <Content Include="Views\Manager\Index.cshtml" />
+    <Content Include="Views\Home\MostView.cshtml" />
+    <Content Include="Views\Home\Popular.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Manager\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

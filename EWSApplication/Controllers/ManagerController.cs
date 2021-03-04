@@ -12,6 +12,11 @@ namespace EWSApplication.Controllers
     public class ManagerController : Controller
     {
         // GET: Manager
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult Download()
         {
             List<ObjFile> data = ManagerBLL.Manager_GetAllFileToDownload();
@@ -23,5 +28,6 @@ namespace EWSApplication.Controllers
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
+
     }
 }
