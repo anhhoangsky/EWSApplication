@@ -1,5 +1,6 @@
 ﻿using EWSApplication.BussinessLayers;
 using EWSApplication.DataLayers.Common;
+using EWSApplication.Entities.DBContext;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,12 +15,14 @@ namespace EWSApplication.Controllers
         // GET: Manager
         public ActionResult Index()
         {
-            return View();
+            List<StructureAccountToRender> obj = SystemBLL.System_GetListInfoAccount();
+            return View(obj);
         }
         
-        public ActionResult tag()
+        public ActionResult Tag()
         {
-            return View();
+            List<Tag> obj = ManagerBLL.Manager_GetListTag();
+            return View(obj);
         }
 
         public ActionResult Download()

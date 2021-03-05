@@ -9,8 +9,8 @@ namespace EWSApplication.Entities.DBContext
     [Table("Faculty")]
     public partial class Faculty
     {
-        [StringLength(10)]
-        public string facultyid { get; set; }
+        
+        public int facultyid { get; set; }
 
         [Required]
         [StringLength(100)]

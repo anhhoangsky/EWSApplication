@@ -1,5 +1,6 @@
 ﻿using EWSApplication.DataLayers;
 using EWSApplication.DataLayers.Common;
+using EWSApplication.Entities.DBContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,10 @@ namespace EWSApplication.BussinessLayers
         public static List<ObjFile> Manager_GetAllFileToDownload()
         {
             return ManagerDAL.GetAllFileToDownload();
+        }
+        public static List<Tag> Manager_GetListTag()
+        {
+            return ManagerDAL.GetListTag();
         }
     }
 }
