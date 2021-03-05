@@ -18,7 +18,7 @@ namespace EWSApplication.Controllers
         {
             List<StructurePostToRender> lst = new List<StructurePostToRender>();
             EWSDbContext db = new EWSDbContext();
-            int pageSize = 2;
+            int pageSize = 5;
             int rowCount = (from s in db.Posts select s).Count();
             int pageCount = rowCount / pageSize;
             ViewBag.pageCount = rowCount / pageSize;
