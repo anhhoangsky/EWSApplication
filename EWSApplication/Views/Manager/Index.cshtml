@@ -1,54 +1,66 @@
-﻿
+﻿@model List<EWSApplication.DataLayers.Common.StructureAccountToRender>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Styles.Render("~/bundles/table")
+<main>
 
-<h2>List of account <small>table useraccount</small></h2>
-<a href="@Url.Action("tag","Manager")">Table tags...</a>
-<ul class="responsive-table">
-    <li class="table-header">
-        <div class="col col-1">User Id</div>
-        <div class="col col-2">User Name</div>
-        <div class="col col-3">email</div>
-        <div class="col col-4">faculty</div>
-        <div class="col col-5">role</div>
-        <div class="col col-6">action</div>
-    </li>
-    <li class="table-row">
-        <div class="col col-1" data-label="User Id">42235</div>
-        <div class="col col-2" data-label="User Name">Nguyễn Hoàng Anh</div>
-        <div class="col col-3" data-label="Email">anhanh@gmail.com</div>
-        <div class="col col-4" data-label="faculty">cntt</div>
-        <div class="col col-5" data-label="role">admin</div>
-        <div class="col col-6" data-label="action">x</div>
-    </li>
-    <li class="table-row">
-        <div class="col col-1" data-label="User Id">42235</div>
-        <div class="col col-2" data-label="User Name">Nguyễn Hoàng Anh</div>
-        <div class="col col-3" data-label="Email">anhanh@gmail.com</div>
-        <div class="col col-4" data-label="faculty">cntt</div>
-        <div class="col col-5" data-label="role">admin</div>
-        <div class="col col-6" data-label="action">x</div>
-    </li>
-    <li class="table-row">
-        <div class="col col-1" data-label="User Id">42235</div>
-        <div class="col col-2" data-label="User Name">Nguyễn Hoàng Anh</div>
-        <div class="col col-3" data-label="Email">anhanh@gmail.com</div>
-        <div class="col col-4" data-label="faculty">cntt</div>
-        <div class="col col-5" data-label="role">admin</div>
-        <div class="col col-6" data-label="action">x</div>
-    </li>
-    <li class="table-row">
-        <div class="col col-1" data-label="User Id">42235</div>
-        <div class="col col-2" data-label="User Name">Nguyễn Hoàng Anh</div>
-        <div class="col col-3" data-label="Email">anhanh@gmail.com</div>
-        <div class="col col-4" data-label="faculty">cntt</div>
-        <div class="col col-5" data-label="role">admin</div>
-        <div class="col col-6" data-label="action">x</div>
-    </li>
+    <h2>List of accounts <small>table useraccount</small></h2>
+    <a href="@Url.Action("tag","Manager")">Table tags...</a>
+    <a class="post_project" href="#" title="">Create</a><ul
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">User Id</div>
+            <div class="col col-2">User Name</div>
+            <div class="col col-3">email</div>
+            <div class="col col-4">faculty</div>
+            <div class="col col-5">role</div>
+            <div class="col col-6">action</div>
+        </li>
+        @foreach (var acc in Model)
+        {
+            <li class="table-row">
+                <div class="col col-1" data-label="User Id">@acc.userid</div>
+                <div class="col col-2" data-label="User Name">@acc.username</div>
+                <div class="col col-3" data-label="Email">@acc.email</div>
+                <div class="col col-4" data-label="faculty">@acc.facultyname</div>
+                <div class="col col-5" data-label="role">@acc.rolename</div>
+                <div class="col col-6" data-label="action"><a id="btn" href="@Url.Action("deleteaccount","manager", new { id=acc.userid})">X</a></div>
+            </li>
 
-</ul>
+        }
+    </ul>
+    <div class="post-popup pst-pj">
+        <div class="post-project">
+            <h3>New Post</h3>
+            <div class="post-project-fields">
+                <form action="@Url.Action("createaccount","manager")" id="UploadForm" method="post">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <input type="text" name="USERNAME" placeholder="USER NAME">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" name="EMAIL" placeholder="EMAIL">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" name="FACULTY" placeholder="FACULTY">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" name="ROLE" placeholder="ROLE">
+                        </div>
+                        <div class="col-lg-12">
+                            <ul>
+                                <li><button class="active" type="submit" value="post" id="post_submit">Post</button></li>
+                                <li><a href="#" id="cancel-project_post" title="">Cancel</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
+            <a href="#" title=""><i class="far fa-times-circle"></i></a>
+        </div>
+    </div>
+</main>
 

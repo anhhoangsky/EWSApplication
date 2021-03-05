@@ -141,9 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\EWS.mdf" />
-    <Content Include="App_Data\EWS_log.ldf">
-      <DependentUpon>EWS.mdf</DependentUpon>
-    </Content>
     <Content Include="Assets\css\all.min.css" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
