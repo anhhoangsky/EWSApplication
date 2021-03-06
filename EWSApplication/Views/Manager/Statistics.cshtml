@@ -12,14 +12,15 @@
 var ctx = document.getElementById('myChart').getContext('2d');
     ctx.width = 500;
     ctx.height = 500;
-    
+
+var col = [Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21)]
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Comment', 'Like', 'View', 'Share', 'Sign', 'Tag'],
         datasets: [{
             label: '# a week',
-            data: [Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21)],
+            data: col,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -40,7 +41,7 @@ var myChart = new Chart(ctx, {
         },
             {
                 label: '# a month',
-                data: [Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21), Math.floor(Math.random() * 21)],
+                data: col,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

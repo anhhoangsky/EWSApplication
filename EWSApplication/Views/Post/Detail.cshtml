@@ -35,7 +35,48 @@
                                 <p>@Model.content</p>
                                 @if (@ViewBag.ListComt.Count > 0)
                                 {
+                                    if (Convert.ToInt32(ViewBag.uroleid) == 2)
+                                    {
+                                        <div class="comment-section">
+                                            <h3>@ViewBag.ListComt.Count Comments</h3>
+                                            <div class="comment-sec">
+                                                <ul>
+                                                    @foreach (var @cmt in @ViewBag.ListComt)
+                                                    {
+                                                        if (Convert.ToInt32(cmt.roleid) ==1 || Convert.ToInt32(cmt.roleid) == 3)
+                                                        {
+                                                            continue;
+                                                        }
+                                                        else
+                                                        {
 
+                                                        <li>
+                                                            <div class="comment-list">
+                                                                <div class="bg-img">
+                                                                    <img src="images/resources/bg-img1.png" alt="">
+                                                                </div>
+                                                                <div class="comment">
+                                                                    <h3>
+                                                                        @if (@cmt.anonymous == true)
+                                                                        {@("Anonymous")}
+                                                                        else
+                                                                        {@cmt.username}
+                                                                </h3>
+                                                                <span><img src="images/clock.png" alt=""> 3 min ago</span>
+                                                                <p>@cmt.Content</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                        }
+
+                                                }
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
                                     <div class="comment-section">
                                         <h3>@ViewBag.ListComt.Count Comments</h3>
                                         <div class="comment-sec">
@@ -48,21 +89,24 @@
                                                                 <img src="images/resources/bg-img1.png" alt="">
                                                             </div>
                                                             <div class="comment">
-                                                                <h3>@if (@cmt.anonymous == true)
-                                                                {@("Anonymous")}
-                                                                else
-                                                                {@cmt.username}</h3>
-                                                                <span><img src="images/clock.png" alt=""> 3 min ago</span>
-                                                                <p>@cmt.Content</p>
-                                                            </div>
+                                                                <h3>
+                                                                    @if (@cmt.anonymous == true)
+                                                                    {@("Anonymous")}
+                                                                    else
+                                                                    {@cmt.username}
+                                                            </h3>
+                                                            <span><img src="images/clock.png" alt=""> 3 min ago</span>
+                                                            <p>@cmt.Content</p>
                                                         </div>
-                                                    </li>
+                                                    </div>
+                                                </li>
 
-                                                }
+                                            }
                                             </ul>
 
                                         </div>
                                     </div>
+                                    }
                                 }
                             </div>
                         </div>
@@ -75,8 +119,6 @@
                             </div>
                             <div class="post_comment_sec">
                                 <form action="~/Post/NewComment" method="post" id="cmt_form">
-                                    @*<input type="hidden" name="iduser" value="12345" />
-                                        <input type="hidden" name="idpost" value="54312" />*@
                                     <textarea placeholder="Your Answer" name="Content" style="float:none"></textarea>
                                     <br>
                                     <div class="slideThree" style="margin:0; padding:0">

@@ -25,6 +25,7 @@ namespace EWSApplication.Controllers
             TempData["postIdFromDetails"] = postId;
             Post postData = new Post();
             postData= PostBLL.Post_GetDetailsPost(postId);
+            ViewBag.uroleid = Session["uroleid"];
             ViewBag.ListComt = PostBLL.Post_GetListCommentOfPost(postId);
             return View(postData);
         }
@@ -36,7 +37,7 @@ namespace EWSApplication.Controllers
             cmtData.postid = Convert.ToInt32(TempData["postIdFromDetails"]);
             //gồm nội dung comment và id người gửi + id bài post...
             PostBLL.Post_CreateNewComment(cmtData);
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
