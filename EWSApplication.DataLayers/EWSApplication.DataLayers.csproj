@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Analysis.cs" />
     <Compile Include="Common\ObjFile.cs" />
     <Compile Include="Common\StructureAccountToRender.cs" />
     <Compile Include="Common\StructureComment.cs" />

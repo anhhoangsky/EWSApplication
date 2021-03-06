@@ -9,15 +9,14 @@ namespace EWSApplication.Entities.DBContext
     [Table("Tag")]
     public partial class Tag
     {
-        [StringLength(10)]
-        public string tagid { get; set; }
-
+        [Key]
         [Required]
-        [StringLength(100)]
+        public int tagid { get; set; }
+
+        [StringLength(50)]
         public string tagname { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [StringLength(50)]
         public string description { get; set; }
     }
 }

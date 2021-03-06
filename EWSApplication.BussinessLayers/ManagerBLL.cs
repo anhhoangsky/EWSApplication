@@ -7,16 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace EWSApplication.BussinessLayers
 {
     public class ManagerBLL
     {
         private static ManagerDAL ManagerDAL = new ManagerDAL();
-        public bool Manager_CreateNewTag(string tagName)
+        public static bool Manager_CreateNewTag(string tagName ,string description)
         {
-            return ManagerDAL.CreateNewTag(tagName);
+            return ManagerDAL.CreateNewTag(tagName, description);
         }
-        public bool Manager_DeleteTag(string tagID)
+        public static bool Manager_DeleteTag(int tagID)
         {
             return ManagerDAL.DeleteTag(tagID);
         }
@@ -27,6 +28,10 @@ namespace EWSApplication.BussinessLayers
         public static List<Tag> Manager_GetListTag()
         {
             return ManagerDAL.GetListTag();
+        }
+        public static List<Analysis> Manager_Analysis()
+        {
+            return ManagerDAL.Analysis();
         }
     }
 }
