@@ -41,10 +41,18 @@ namespace EWSApplication.Controllers
             return View(/*obj*/);
         }
 
-        public ActionResult Download()
+        public ActionResult Review(int facultyid=1)
         {
-            List<ObjFile> data = ManagerBLL.Manager_GetAllFileToDownload();
-            return View(data);
+            // list theo khoa
+            //List<Tag> obj = ManagerBLL.Manager_GetListTag();
+            return View(/*obj*/);
+        }
+
+        public ActionResult Download(int facultyid=1)
+        {
+            // list theo khoa !!!!
+            //List<ObjFile> data = ManagerBLL.Manager_GetAllFileToDownload();
+            return View(/*data*/);
         }
         public ActionResult DownFile(string filePath)
         {
