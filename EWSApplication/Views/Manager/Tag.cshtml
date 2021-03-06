@@ -15,7 +15,7 @@
             <div class="col col-1">Tag Id</div>
             <div class="col col-2">Tag Name</div>
             <div class="col col-3">Description</div>
-            <div class="col col-6">action</div>
+            <div class="col col-6"></div>
         </li>
         @foreach (var tag in Model)
         {
@@ -31,7 +31,7 @@
     </ul>
     <div class="post-popup pst-pj">
         <div class="post-project">
-            <h3>New Post</h3>
+            <h3>New Tag</h3>
             <div class="post-project-fields">
                 <form action="@Url.Action("CreateTag","Manager")" id="UploadForm" method="post">
                     <div class="row">

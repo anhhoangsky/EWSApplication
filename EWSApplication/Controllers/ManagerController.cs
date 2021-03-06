@@ -35,6 +35,12 @@ namespace EWSApplication.Controllers
             ManagerBLL.Manager_CreateNewTag(tagName, description);
             return RedirectToAction("Tag", "Manager");
         }
+        public ActionResult Statistics()
+        {
+            //List<Tag> obj = ManagerBLL.Manager_GetListTag();
+            return View(/*obj*/);
+        }
+
         public ActionResult Download()
         {
             List<ObjFile> data = ManagerBLL.Manager_GetAllFileToDownload();
