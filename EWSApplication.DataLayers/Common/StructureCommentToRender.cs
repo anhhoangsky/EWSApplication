@@ -10,5 +10,6 @@ namespace EWSApplication.DataLayers.Common
     public class StructureCommentToRender : Comment
     {
         public string username { get; set; }
+        public int roleid { get; set; }
     }
 }

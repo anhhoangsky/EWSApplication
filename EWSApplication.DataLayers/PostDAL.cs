@@ -221,7 +221,8 @@ namespace EWSApplication.DataLayers
                             Content = c.Content,
                             postid = c.postid,
                             userid = c.userid,
-                            username = u.username
+                            username = u.username,
+                            roleid = u.roleid
                         }).ToList();
             List<StructureCommentToRender> data = new List<StructureCommentToRender>();
             foreach (var c in list)
@@ -234,7 +235,8 @@ namespace EWSApplication.DataLayers
                             Content = c.Content,
                             postid = c.postid,
                             userid = c.userid,
-                            username = c.username
+                            username = c.username,
+                            roleid = c.roleid
                 });
             }
             return data;
