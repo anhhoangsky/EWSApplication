@@ -121,9 +121,9 @@ namespace EWSApplication.Controllers
         }
         [HttpPost]
         public ActionResult Register(UserAccount acc)
-        {
+       {
             SystemBLL.System_CreateNewAccount(acc);
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("Index", "manager");
         }
     }
 }

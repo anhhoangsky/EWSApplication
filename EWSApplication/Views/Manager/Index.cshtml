@@ -36,7 +36,7 @@
         <div class="post-project current">
             <h3>New Account</h3>
             <div class="post-project-fields">
-                <form action="@Url.Action("createaccount","manager")" method="post">
+                <form action="@Url.Action("Register","home")" method="post">
                     <div class="row">
                         <div class="col-lg-12 no-pdd">
                             <div class="sn-field">
@@ -52,9 +52,9 @@
                         </div>
                         <div class="col-lg-12 no-pdd">
                             <div class="sn-field">
-                                <select name="role">
-                                    <option value="Student">Student</option>
-                                    <option value="Staff">Staff</option>
+                                <select name="roleid">
+                                    <option value="2">Student</option>
+                                    <option value="3">Staff</option>
                                 </select>
                                 <i class="fab fa-dropbox"></i>
                                 <span><i class="fa fa-ellipsis-h"></i></span>
@@ -62,9 +62,9 @@
                         </div>
                         <div class="col-lg-12 no-pdd">
                             <div class="sn-field">
-                                <select name="faculty">
-                                    <option value="xx">xx</option>
-                                    <option value="yz">yz</option>
+                                <select name="facultyid">
+                                    <option value="1">Tin</option>
+                                    <option value="2">Toán</option>
                                 </select>
                                 <i class="fab fa-dropbox"></i>
                                 <span><i class="fa fa-ellipsis-h"></i></span>
