@@ -98,7 +98,15 @@
                                             <a href="@Url.Action("statistics","manager")" title="">manager</a>
                                         </div>
                                     </div>
-
+                                    <div class="filter-dd">
+                                        <div class="filter-ttl">
+                                            <form action="@Url.Action("settime","Home")">
+                                                <label for="opentime">To open time:</label>
+                                                <input type="datetime-local" id="opentime" name="opentime">
+                                                <input type="submit">
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         }
