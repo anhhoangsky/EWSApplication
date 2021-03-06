@@ -24,6 +24,11 @@ namespace EWSApplication.Controllers
             List<Tag> obj = ManagerBLL.Manager_GetListTag();
             return View(obj);
         }
+        public ActionResult Statistics()
+        {
+            //List<Tag> obj = ManagerBLL.Manager_GetListTag();
+            return View(/*obj*/);
+        }
 
         public ActionResult Download()
         {
