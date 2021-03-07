@@ -95,9 +95,9 @@ namespace EWSApplication.Controllers
         [HttpPost]
         public ActionResult settime(FormCollection cl)
         {
-            // update table time ở đây
             string dt = cl["opentime"];
-            SystemBLL.System_UpdateOpenTime(dt);
+            if(SystemBLL.System_UpdateOpenTime(dt))
+            Session["opentime"] = dt;
             return RedirectToAction("Index", "Home");
         }
 
@@ -122,7 +122,7 @@ namespace EWSApplication.Controllers
             Session["uname"] = userInfo.username;
             Session["ufacultyid"] = userInfo.facultyid;
             Session["uroleid"] = userInfo.roleid;
-            Session["opentime"] = userInfo.opentime;
+            Session["opentime"] = userInfo.opentime.ToString();
             Session["facultyname"] = facultyName;
             FormsAuthentication.SetAuthCookie("isLogin", false);
             return RedirectToAction("Index", "Home");

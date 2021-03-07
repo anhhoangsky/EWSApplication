@@ -369,7 +369,7 @@
     });
     var timerId =
         countdown(
-            new Date(2021, 2, 3, 17, 49),
+            new Date("@ViewBag.opentime"),
             function (ts) {
                 if (ts.value > 0) {
                     window.clearInterval(timerId);
