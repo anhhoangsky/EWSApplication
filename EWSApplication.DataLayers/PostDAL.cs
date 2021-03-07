@@ -129,13 +129,14 @@ namespace EWSApplication.DataLayers
         /// lấy top 5 bài post phổ biến
         /// </summary>
         /// <returns></returns>
-        public List<StructurePostToRender> GetTopPopularPost()
+        public List<StructurePostToRender> GetTopPopularPost(int facultyid_temp)
         {
             List<StructurePostToRender> lst = new List<StructurePostToRender>();
             //lst = db.Posts.OrderByDescending(x => x.like).Take(5).ToList();
             var list = (from p in db.Posts
                         join u in db.UserAccounts
                         on p.userid equals u.userid
+                        where u.facultyid == facultyid_temp
                         orderby p.like descending
                         select new
                         {
@@ -176,13 +177,14 @@ namespace EWSApplication.DataLayers
         /// lấy top 5 bài post nhiều view nhất
         /// </summary>
         /// <returns></returns>
-        public List<StructurePostToRender> GetTopViewPost()
+        public List<StructurePostToRender> GetTopViewPost(int facultyid_temp)
         {
             List<StructurePostToRender> lst = new List<StructurePostToRender>();
             //lst = db.Posts.OrderByDescending(x => x.like).Take(5).ToList();
             var list = (from p in db.Posts
                         join u in db.UserAccounts
                         on p.userid equals u.userid
+                        where u.facultyid == facultyid_temp
                         orderby p.view descending
                         select new
                         {

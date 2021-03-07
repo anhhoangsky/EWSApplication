@@ -27,7 +27,7 @@ namespace EWSApplication.Controllers
             ViewBag.opentime = Session["opentime"];
 
             int pageSize = 5;
-            int rowCount = (from s in db.Posts select s).Count();
+            int rowCount = (from s in db.Posts where s.isActive == true select s).Count();
             int pageCount = rowCount / pageSize;
             ViewBag.pageCount = rowCount / pageSize;
             //ViewBag.pageSize = pageSize;
@@ -47,9 +47,10 @@ namespace EWSApplication.Controllers
                 page = 1;
             }
             int roleid_temp = Int32.Parse(Session["uroleid"].ToString());
-            if(roleid_temp == 1 || roleid_temp == 5)
+            int facultyid_temp = Int32.Parse(Session["ufacultyid"].ToString());
+            if (roleid_temp == 1 || roleid_temp == 5)
             {
-                PostBLL.Post_GetAllPost_Guest(page,pageSize);
+                lst = PostBLL.Post_GetAllPost_Guest(page,pageSize);
             }
             else
             {               
@@ -60,11 +61,11 @@ namespace EWSApplication.Controllers
                 }
                 if (mode == "popular")
                 {
-                    lst = PostBLL.Post_GetTopPopularPost();
+                    lst = PostBLL.Post_GetTopPopularPost(facultyid_temp);
                 }
                 if (mode == "topview")
                 {
-                    lst = PostBLL.Post_GetTopViewPost();
+                    lst = PostBLL.Post_GetTopViewPost(facultyid_temp);
                 }
             }
             return View(lst);
@@ -85,14 +86,16 @@ namespace EWSApplication.Controllers
 
         public ActionResult MostView()
         {
+            int facultyid_temp = Int32.Parse(Session["ufacultyid"].ToString());
             List<StructurePostToRender> lst = new List<StructurePostToRender>();
-            lst = PostBLL.Post_GetTopViewPost();
+            lst = PostBLL.Post_GetTopViewPost(facultyid_temp);
             return View(lst);
         }
         public ActionResult Popular()
         {
+            int facultyid_temp = Int32.Parse(Session["ufacultyid"].ToString());
             List<StructurePostToRender> lst = new List<StructurePostToRender>();
-            lst = PostBLL.Post_GetTopPopularPost();
+            lst = PostBLL.Post_GetTopPopularPost(facultyid_temp);
             return View(lst);
         }
         [AllowAnonymous]
