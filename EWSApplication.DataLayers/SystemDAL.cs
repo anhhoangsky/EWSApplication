@@ -101,7 +101,7 @@ namespace EWSApplication.DataLayers
 
         public string GetFaculty(int id)
         {
-            string facultyname = db.Faculties.Find(new { facultyid = id}).facultyname;
+            string facultyname = db.Faculties.Find(id).facultyname;
             return facultyname;
         }
 
