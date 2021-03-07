@@ -12,6 +12,10 @@ namespace EWSApplication.BussinessLayers
     public class PostBLL
     {
         public static PostDAL pstDAL = new PostDAL();
+        public static List<StructurePostToRender> Post_GetAllPost_Guest(int page , int pageSize)
+        {
+            return pstDAL.GetAllPost_Guest(page, pageSize);
+        }
         public static List<StructurePostToRender> Post_GetAllPost(int page, int pageSize , int facultyid)
         {
             return pstDAL.GetAllPost( page,  pageSize, facultyid);
