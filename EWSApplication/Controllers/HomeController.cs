@@ -45,7 +45,7 @@ namespace EWSApplication.Controllers
             if (mode == "all")
             {
                
-                lst = PostBLL.Post_GetAllPost( page,  pageSize);
+                lst = PostBLL.Post_GetAllPost( page,  pageSize, Int32.Parse(Session["ufacultyid"].ToString()));
             }
             if (mode == "popular")
             {

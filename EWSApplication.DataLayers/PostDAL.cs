@@ -19,7 +19,7 @@ namespace EWSApplication.DataLayers
         /// lấy danh sách tất cả bài post để hiển thị trên Home
         /// </summary>
         /// <returns></returns>
-        public List<StructurePostToRender> GetAllPost(int page , int pageSize)
+        public List<StructurePostToRender> GetAllPost(int page , int pageSize,int facultyid)
         {
             #region use LinQ
             //var list = (from p in db.Posts
@@ -46,12 +46,13 @@ namespace EWSApplication.DataLayers
 
             SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EWS.mdf;");
             SqlCommand command = new SqlCommand();
-            command.CommandText = "select * from (select p.*,u.username, ROW_NUMBER() OVER(ORDER BY postid ASC) AS RowNumber from Post as p INNER JOIN UserAccount as u on u.userid = p.userid) as t where t.RowNumber BETWEEN @StartPos AND @EndPos";
+            command.CommandText = "select * from (select p.*,u.username,u.facultyid, ROW_NUMBER() OVER(ORDER BY postid ASC) AS RowNumber from Post as p INNER JOIN UserAccount as u on u.userid = p.userid) as t where (t.RowNumber BETWEEN @StartPos AND @EndPos ) and isActive = 1 and t.facultyid = @facultyid";
             command.CommandType = CommandType.Text;
             command.Connection = connect;
             connect.Open(); // mở kết nối
             command.Parameters.AddWithValue("@StartPos", startPos);
             command.Parameters.AddWithValue("@EndPos", endPos);
+            command.Parameters.AddWithValue("@facultyid", facultyid);
             SqlDataReader read = command.ExecuteReader(CommandBehavior.CloseConnection);
             List<StructurePostToRender> data = new List<StructurePostToRender>();
             while (read.Read())

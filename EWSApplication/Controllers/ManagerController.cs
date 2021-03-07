@@ -45,17 +45,21 @@ namespace EWSApplication.Controllers
             //List<Tag> obj = ManagerBLL.Manager_GetListTag();
             return View(/*obj*/);
         }
-
+        [HttpGet]
         public ActionResult Review(int facultyid=1)
         {
-            // list theo khoa
-            //List<Tag> obj = ManagerBLL.Manager_GetListTag();
-            return View(/*obj*/);
+            List<PostWaitingActive> obj = ManagerBLL.Manager_GetPostWaitingActive(facultyid);
+            return View(obj);
+        }
+        [HttpPost]
+        public ActionResult Review(object postid)
+        {
+            ManagerBLL.Manager_ActivePost(postid);
+            return View();
         }
 
         public ActionResult Download(int facultyid=1)
         {
-            // list theo khoa !!!!
             List<string> data = ManagerBLL.Manager_GetAllFileToDownload();
             return View(data);
         }
