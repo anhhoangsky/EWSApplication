@@ -124,5 +124,41 @@ namespace EWSApplication.DataLayers
             return data;
         }
         #endregion
+        public List<PostWaitingActive> GetPostWaitingActive(int facultyid)
+        {
+            SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EWS.mdf;");
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "select * from (select p.*,u.username,u.facultyid from Post as p INNER JOIN UserAccount as u on u.userid = p.userid) as t where isActive = 0 and t.facultyid = @facultyid";
+            command.CommandType = CommandType.Text;
+            command.Connection = connect;
+            connect.Open(); // mở kết nối
+            command.Parameters.AddWithValue("@facultyid", facultyid);
+            SqlDataReader read = command.ExecuteReader(CommandBehavior.CloseConnection);
+            List<PostWaitingActive> data = new List<PostWaitingActive>();
+            while (read.Read())
+            {
+                data.Add(new PostWaitingActive
+                {
+                    postid = Convert.ToInt32(read["postid"]),
+                    username = Convert.ToString(read["username"]),
+                    title = Convert.ToString(read["title"])
+                });
+            }
+            return data;
+        }
+        public bool ActivePost(object postid)
+        {
+            try
+            {
+                var pst = db.Posts.Where(x => x.postid == Int32.Parse(postid.ToString())).SingleOrDefault();
+                pst.isActive = true;
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
     }
 }
