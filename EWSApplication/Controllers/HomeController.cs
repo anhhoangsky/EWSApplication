@@ -89,6 +89,15 @@ namespace EWSApplication.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult settime(FormCollection cl)
+        {
+            // update table time ở đây
+            string dt = cl["opentime"];
+            return RedirectToAction("Index", "Home");
+        }
+
         /// <summary>
         /// 
         /// </summary>
