@@ -46,13 +46,13 @@
                                         <div class="row">
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
-                                                    <input type="text" name="username" placeholder="Username">
+                                                    <input type="text" name="username" id="username" placeholder="Username">
                                                     <i class="far fa-user"></i>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
-                                                    <input type="password" name="password" placeholder="Password">
+                                                    <input type="password" name="password" id="password" placeholder="Password">
                                                     <i class="fas fa-shield-alt"></i>
                                                 </div>
                                             </div>
@@ -70,6 +70,7 @@
                                             </div>
                                             <div class="col-lg-12 no-pdd">
                                                 <button type="submit" value="submit">Sign in</button>
+                                                <button onclick="guest()" style="background-color:#eee; color:#333" >Guest</button>
                                             </div>
                                         </div>
                                     </form>
@@ -221,6 +222,12 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/slick")
     @Scripts.Render("~/bundles/js")
+    <script>
+        function guest(){
+            document.getElementById("username").value = "Guest";
+            document.getElementById("password").value = "1";
+        }
+    </script>
 
 </body>
 </html>
