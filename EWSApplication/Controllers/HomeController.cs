@@ -29,6 +29,8 @@ namespace EWSApplication.Controllers
             ViewBag.userName = Session["uname"];
             ViewBag.ufacultyid = Session["ufacultyid"];
             ViewBag.uroleid = Session["uroleid"];
+            ViewBag.facultyname = Session["facultyname"];
+            ViewBag.opentime = Session["opentime"];
             if (rowCount % pageSize > 0)
             {
                 ViewBag.pageCount = rowCount / pageSize + 1;
@@ -95,6 +97,7 @@ namespace EWSApplication.Controllers
         {
             // update table time ở đây
             string dt = cl["opentime"];
+            SystemBLL.System_UpdateOpenTime(dt);
             return RedirectToAction("Index", "Home");
         }
 
@@ -108,7 +111,8 @@ namespace EWSApplication.Controllers
         [HttpPost]
         public ActionResult Login(string userName, string password)
         {
-                var userInfo = SystemBLL.System_Login(userName, password);
+            var userInfo = SystemBLL.System_Login(userName, password);
+            string facultyName = SystemBLL.System_GetFaculty(userInfo.facultyid);
             if (userInfo == null)
             {
                 ModelState.AddModelError("", "Login Failed!");
@@ -118,6 +122,8 @@ namespace EWSApplication.Controllers
             Session["uname"] = userInfo.username;
             Session["ufacultyid"] = userInfo.facultyid;
             Session["uroleid"] = userInfo.roleid;
+            Session["opentime"] = userInfo.opentime;
+            Session["facultyname"] = facultyName;
             FormsAuthentication.SetAuthCookie("isLogin", false);
             return RedirectToAction("Index", "Home");
 

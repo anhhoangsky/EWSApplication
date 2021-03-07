@@ -27,5 +27,6 @@ namespace EWSApplication.Entities.DBContext
         [StringLength(100)]
         public string username { get; set; }
         public int facultyid { get; set; }
+        public DateTime? opentime { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace EWSApplication.Controllers
             postData= PostBLL.Post_GetDetailsPost(postId);
             ViewBag.uroleid = Session["uroleid"];
             ViewBag.ListComt = PostBLL.Post_GetListCommentOfPost(postId);
+            ViewBag.opentime = Session["opentime"];
             return View(postData);
         }
 
