@@ -16,6 +16,44 @@ namespace EWSApplication.DataLayers
     {
         EWSDbContext db = new EWSDbContext();
         /// <summary>
+        /// Chế đọ xem của Guest
+        /// </summary>
+        /// <returns></returns>
+        public List<StructurePostToRender> GetAllPost_Guest(int page , int pageSize)
+        {
+            int startPos = (page - 1) * pageSize + 1;
+            int endPos = startPos + pageSize - 1;
+            SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EWS.mdf;");
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "select * from (select p.*,u.username,u.facultyid,, ROW_NUMBER() OVER(ORDER BY postid ASC) AS RowNumber from Post as p INNER JOIN UserAccount as u on u.userid = p.userid) as t where (t.RowNumber BETWEEN @StartPos AND @EndPos ) and isActive = 1";
+            command.CommandType = CommandType.Text;
+            command.Connection = connect;
+            connect.Open(); // mở kết nối
+            command.Parameters.AddWithValue("@StartPos", startPos);
+            command.Parameters.AddWithValue("@EndPos", endPos);
+            SqlDataReader read = command.ExecuteReader(CommandBehavior.CloseConnection);
+            List<StructurePostToRender> data = new List<StructurePostToRender>();
+            while (read.Read())
+            {
+                data.Add(new StructurePostToRender
+                {
+                    postid = Convert.ToInt32(read["postid"]),
+                    title = Convert.ToString(read["title"]),
+                    anonymous = Convert.ToBoolean(read["anonymous"]),
+                    tag = Convert.ToString(read["tag"]),
+                    userid = Convert.ToInt32(read["userid"]),
+                    content = Convert.ToString(read["content"]),
+                    view = Convert.ToInt32(read["view"]),
+                    like = Convert.ToInt32(read["like"]),
+                    dislike = Convert.ToInt32(read["dislike"]),
+                    datetimepost = Convert.ToDateTime(read["datetimepost"]),
+                    filePath = Convert.ToString(read["filePath"]),
+                    username = Convert.ToString(read["username"])
+                });
+            }
+            return data;
+        }
+        /// <summary>
         /// lấy danh sách tất cả bài post để hiển thị trên Home
         /// </summary>
         /// <returns></returns>

@@ -18,6 +18,14 @@ namespace EWSApplication.Controllers
         {
             List<StructurePostToRender> lst = new List<StructurePostToRender>();
             EWSDbContext db = new EWSDbContext();
+            
+            ViewBag.userId = Session["uid"];
+            ViewBag.userName = Session["uname"];
+            ViewBag.ufacultyid = Session["ufacultyid"];
+            ViewBag.uroleid = Session["uroleid"];
+            ViewBag.facultyname = Session["facultyname"];
+            ViewBag.opentime = Session["opentime"];
+
             int pageSize = 5;
             int rowCount = (from s in db.Posts select s).Count();
             int pageCount = rowCount / pageSize;
@@ -25,12 +33,6 @@ namespace EWSApplication.Controllers
             //ViewBag.pageSize = pageSize;
             ViewBag.pageCur = page;
             //ViewBag.mode = mode;
-            ViewBag.userId = Session["uid"];
-            ViewBag.userName = Session["uname"];
-            ViewBag.ufacultyid = Session["ufacultyid"];
-            ViewBag.uroleid = Session["uroleid"];
-            ViewBag.facultyname = Session["facultyname"];
-            ViewBag.opentime = Session["opentime"];
             if (rowCount % pageSize > 0)
             {
                 ViewBag.pageCount = rowCount / pageSize + 1;
@@ -44,18 +46,26 @@ namespace EWSApplication.Controllers
             {
                 page = 1;
             }
-            if (mode == "all")
+            int roleid_temp = Int32.Parse(Session["uroleid"].ToString());
+            if(roleid_temp == 1 || roleid_temp == 5)
             {
-               
-                lst = PostBLL.Post_GetAllPost( page,  pageSize, Int32.Parse(Session["ufacultyid"].ToString()));
+                PostBLL.Post_GetAllPost_Guest(page,pageSize);
             }
-            if (mode == "popular")
-            {
-                lst = PostBLL.Post_GetTopPopularPost();
-            }
-            if (mode == "topview")
-            {
-                lst = PostBLL.Post_GetTopViewPost();
+            else
+            {               
+                if (mode == "all")
+                {
+
+                    lst = PostBLL.Post_GetAllPost(page, pageSize, Int32.Parse(Session["ufacultyid"].ToString()));
+                }
+                if (mode == "popular")
+                {
+                    lst = PostBLL.Post_GetTopPopularPost();
+                }
+                if (mode == "topview")
+                {
+                    lst = PostBLL.Post_GetTopViewPost();
+                }
             }
             return View(lst);
         }
