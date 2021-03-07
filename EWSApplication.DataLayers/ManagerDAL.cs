@@ -65,22 +65,18 @@ namespace EWSApplication.DataLayers
         }
         #endregion
         #region download tệp đính kèm
-        public List<ObjFile> GetAllFileToDownload()
+        public List<string> GetAllFileToDownload()
         {
-            List<ObjFile> ObjFiles = new List<ObjFile>();
-            var listPath = from s in db.Posts
+            List<string> lstFiles = new List<string>();
+            var listPath = (from s in db.Posts
                            where s.filePath != ""
-                           select s.filePath;
+                           select s.filePath).ToList();
             foreach (string strfile in listPath)
             {
-                FileInfo fi = new FileInfo(strfile);
-                ObjFile obj = new ObjFile();
-                obj.File = fi.Name;
-                obj.Size = fi.Length;
-                obj.Type = GetFileTypeByExtension(fi.Extension);
-                ObjFiles.Add(obj);
+                string temp = Path.GetFileName(strfile);
+                lstFiles.Add(temp);
             }
-            return ObjFiles;
+            return lstFiles;
         }
         
         private string GetFileTypeByExtension(string fileExtension)

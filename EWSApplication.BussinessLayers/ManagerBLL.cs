@@ -21,7 +21,7 @@ namespace EWSApplication.BussinessLayers
         {
             return ManagerDAL.DeleteTag(tagID);
         }
-        public static List<ObjFile> Manager_GetAllFileToDownload()
+        public static List<string> Manager_GetAllFileToDownload()
         {
             return ManagerDAL.GetAllFileToDownload();
         }

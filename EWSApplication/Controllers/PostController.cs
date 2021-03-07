@@ -54,7 +54,7 @@ namespace EWSApplication.Controllers
                 if (file != null)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    filePath = Path.Combine(Server.MapPath("/Files"));
+                    filePath = Path.Combine(Server.MapPath("/Files"),fileName);
                     file.SaveAs(filePath);
                 }
                 else
