@@ -146,11 +146,11 @@ namespace EWSApplication.DataLayers
             }
             return data;
         }
-        public bool ActivePost(object postid)
+        public bool ActivePost(int postid)
         {
             try
             {
-                var pst = db.Posts.Where(x => x.postid == Int32.Parse(postid.ToString())).SingleOrDefault();
+                var pst = db.Posts.Where(x => x.postid == postid).SingleOrDefault();
                 pst.isActive = true;
                 db.SaveChanges();
                 return true;

@@ -51,11 +51,11 @@ namespace EWSApplication.Controllers
             List<PostWaitingActive> obj = ManagerBLL.Manager_GetPostWaitingActive(facultyid);
             return View(obj);
         }
-        [HttpPost]
-        public ActionResult Review(string postid)
+        [HttpGet]
+        public ActionResult Accept(int postid)
         {
             ManagerBLL.Manager_ActivePost(postid);
-            return View();
+            return RedirectToAction("Review", new { facultyid = Convert.ToInt32(Session["ufacultyid"]) });
         }
 
         public ActionResult Download()

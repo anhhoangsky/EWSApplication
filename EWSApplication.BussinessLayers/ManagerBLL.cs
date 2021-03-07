@@ -37,7 +37,7 @@ namespace EWSApplication.BussinessLayers
         {
             return ManagerDAL.GetPostWaitingActive(facultyid);
         }
-        public static bool Manager_ActivePost(object postid)
+        public static bool Manager_ActivePost(int postid)
         {
             return ManagerDAL.ActivePost(postid);
         }

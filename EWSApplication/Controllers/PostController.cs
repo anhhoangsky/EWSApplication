@@ -37,7 +37,7 @@ namespace EWSApplication.Controllers
             cmtData.postid = Convert.ToInt32(TempData["postIdFromDetails"]);
             //gồm nội dung comment và id người gửi + id bài post...
             PostBLL.Post_CreateNewComment(cmtData);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Detail", new { postId = Convert.ToInt32(TempData["postIdFromDetails"]) });
         }
 
         [HttpPost]
