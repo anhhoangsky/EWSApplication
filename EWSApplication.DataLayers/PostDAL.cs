@@ -25,7 +25,7 @@ namespace EWSApplication.DataLayers
             int endPos = startPos + pageSize - 1;
             SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EWS.mdf;");
             SqlCommand command = new SqlCommand();
-            command.CommandText = "select * from (select p.*,u.username,u.facultyid,, ROW_NUMBER() OVER(ORDER BY postid ASC) AS RowNumber from Post as p INNER JOIN UserAccount as u on u.userid = p.userid) as t where (t.RowNumber BETWEEN @StartPos AND @EndPos ) and isActive = 1";
+            command.CommandText = "select * from (select p.*,u.username,u.facultyid, ROW_NUMBER() OVER(ORDER BY postid ASC) AS RowNumber from Post as p INNER JOIN UserAccount as u on u.userid = p.userid) as t where (t.RowNumber BETWEEN @StartPos AND @EndPos ) and isActive = 1";
             command.CommandType = CommandType.Text;
             command.Connection = connect;
             connect.Open(); // mở kết nối
