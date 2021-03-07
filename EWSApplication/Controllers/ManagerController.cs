@@ -46,19 +46,19 @@ namespace EWSApplication.Controllers
             return View(/*obj*/);
         }
         [HttpGet]
-        public ActionResult Review(int facultyid=1)
+        public ActionResult Review(int facultyid)
         {
             List<PostWaitingActive> obj = ManagerBLL.Manager_GetPostWaitingActive(facultyid);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult Review(object postid)
+        public ActionResult Review(string postid)
         {
             ManagerBLL.Manager_ActivePost(postid);
             return View();
         }
 
-        public ActionResult Download(int facultyid=1)
+        public ActionResult Download()
         {
             List<string> data = ManagerBLL.Manager_GetAllFileToDownload();
             return View(data);
